@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import './modules/Header/header.css';
 import Header from './modules/Header/header';
+import Game from './modules/Game/game';
+
 
 class App extends Component {
   render() {
@@ -11,6 +13,7 @@ class App extends Component {
           title="React - Jack"
           subtitle="Redux"
         />
+        <Game />
       </div>
     );
   }

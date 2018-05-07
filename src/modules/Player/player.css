@@ -1,0 +1,6 @@
+.player-container {
+    background-color: white;
+    outline: red 1px solid;
+    height: 15em;
+    width: 15em;
+}
