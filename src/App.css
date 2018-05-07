@@ -1,3 +1,21 @@
+/*
+FONTS
+
+font-family: 'Mr Dafoe', cursive;
+font-family: 'Monoton', cursive;
+*/
+
+
+body {
+  background-color: #01431E;
+}
+
+.header-span {
+  color: white;
+  font-family: 'Monoton', cursive;
+
+}
+
 .App {
   text-align: center;
 }
@@ -8,14 +26,19 @@
 }
 
 .App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+  font-size: 300%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: #3C1912;
+  height: 100px;
+  color: #F3C620;
 }
 
 .App-title {
   font-size: 1.5em;
+  font-family: 'Mr Dafoe', cursive;
 }
 
 .App-intro {
