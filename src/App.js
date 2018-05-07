@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import './App.css';
+import './modules/Header/header.css';
+import Header from './modules/Header/header';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Blackjack <span className="header-span">Redux</span></h1>
-        </header>
+        <Header
+          title="React - Jack"
+          subtitle="Redux"
+        />
       </div>
     );
   }
