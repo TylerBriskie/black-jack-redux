@@ -1,0 +1,7 @@
+.player-object {
+    height: 450px;
+    width: 300px;
+    border-radius: 25px;
+    background-color:mistyrose;
+    margin: 0 2em;
+}

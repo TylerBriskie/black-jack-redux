@@ -12,6 +12,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 .App {
@@ -20,4 +21,11 @@ body {
 
 .App-intro {
   font-size: large;
+}
+
+.players-container {
+  display: flex;
+  flex-direction: row;
+
+
 }
