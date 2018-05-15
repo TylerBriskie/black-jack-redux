@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './header.css';
+import './Header.css';
 
 const propTypes = {
   title: PropTypes.string.isRequired,
@@ -9,8 +9,8 @@ const propTypes = {
 
 function Header({title, subtitle}){
   return (
-    <header className="App-header">
-      <h1 className="App-title">{title} <span className="header-span">{subtitle}</span></h1>
+    <header className="header">
+      <h1 className="header-title">{title} <span className="header-span">{subtitle}</span></h1>
     </header>
   )
 }

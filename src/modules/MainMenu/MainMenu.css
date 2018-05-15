@@ -1,0 +1,33 @@
+.main-menu {
+    background-color: white;
+        -webkit-border-radius: 5%;
+        -moz-border-radius: 5%;
+    border-radius: 40px;
+    width: 50%;
+    margin: auto;
+    position: fixed;
+    font-family: 'Raleway', sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.btn {
+    border-radius: 40px;
+    font-family: 'Raleway', sans-serif;
+}
+
+.add-player-button {
+    color: #F3C620;
+    padding: 1%;
+    background-color: #011E73;
+    width: 25%;
+}
+
+.new-game-button {
+    width: 50%;
+    margin: 2% auto;
+    padding: 1%;
+    background-color: #01431E;
+    color: #F3C620;
+}
