@@ -7,6 +7,7 @@ class MainMenu extends React.Component {
         super(props);
         this.state = {
             playerName: '',
+            players: []
         }
         this.addNewPlayer = this.addNewPlayer.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -15,8 +16,15 @@ class MainMenu extends React.Component {
     addNewPlayer(event) {
         event.preventDefault();
         console.log("Adding Player: ", this.state.playerName);
-
-    };
+        let newState = Object.assign({}, this.state);
+        let newPlayer = {
+            playerName: this.state.playerName,
+            bankRoll: 100,
+        };
+        newState.push(newPlayer);
+        this.setState(newState);
+    }
+    ;
 
     handleChange(event){
         this.setState({playerName: event.target.value});
