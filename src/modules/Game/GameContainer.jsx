@@ -1,13 +1,16 @@
 import { connect } from 'react-redux';
 import Game from './Game';
-import { getPlayers, getDealer, getDeck } from './selectors/gameSelectors';
+// import { getPlayers, getDealer, getDeck } from './selectors/gameSelectors';
 // import { } from './actions/gameActions';
 
-export const mapStateToProps = state => ({
-    players: state.players,
-    dealer: state.dealer,
-    deck: state.deck
-});
+export const mapStateToProps = state => {
+    return {
+        state: state,
+        players: state.game.players,
+        dealer: state.game.dealer,
+        deck: state.game.deck
+    }
+};
 
 export const mapDispatchToProps = dispatch => ({
     // addPlayer: player => dispatch(addPlayer(player)),

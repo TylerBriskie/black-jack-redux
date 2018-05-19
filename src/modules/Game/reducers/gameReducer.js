@@ -13,18 +13,13 @@ const initialState = {
 
 export default (state = initialState, { type, ...payload}) =>{
     if (type === NEW_PLAYER){
-        console.log("ADDING NEW PLAYER", payload);
-        console.log("state:" , state);
         const { players } = state;
-        console.log(players);
         let newPlayer = {
             name: payload.name,
             bankRoll: 500,
             hands: [],
         };
-        console.log(newPlayer);
         players.push(newPlayer);
-        console.log(players);
         return {
             ...state,
             players
@@ -32,8 +27,7 @@ export default (state = initialState, { type, ...payload}) =>{
     }
 
     if (type === NEW_GAME){
-        console.log("NEW GAME!!!!!!!")
-        console.log(state);
+        return state;
     }
     return state;
 
