@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Header from './modules/Header/Header';
 import MainMenu from './modules/MainMenu/MainMenu';
-import Player from './modules/Player/Player';
+import Game from './modules/Game/Game';
 
 class App extends Component {
   render() {
@@ -12,12 +12,7 @@ class App extends Component {
           title="React - Jack"
           subtitle="Redux"
         />
-        <div className="players-container">
-            <Player />
-            <Player />
-            <Player />
-            <Player />
-        </div>
+        <Game />
         <MainMenu />
       </div>
     );
