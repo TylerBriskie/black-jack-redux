@@ -9,10 +9,9 @@ export const mapStateToProps = state => ({
     deck: state.deck
 });
 
-export const mapDispatchToPrpos = dispatch => ({
-    addPlayer: player => dispatch(addPlayer(player)),
-
+export const mapDispatchToProps = dispatch => ({
+    // addPlayer: player => dispatch(addPlayer(player)),
 
 });
 
-export default connect(mapStateToProps, mapDispatchToPrpos)(Game);
+export default connect(mapStateToProps, mapDispatchToProps)(Game);

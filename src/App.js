@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 import Header from './modules/Header/Header';
-import MainMenu from './modules/MainMenu/MainMenu';
-import Game from './modules/Game/Game';
+import MainMenuContainer from './modules/MainMenu/MainMenuContainer';
+import GameContainer from './modules/Game/GameContainer';
+
 
 class App extends Component {
   render() {
@@ -12,8 +13,8 @@ class App extends Component {
           title="React - Jack"
           subtitle="Redux"
         />
-        <Game />
-        <MainMenu />
+        <GameContainer />
+        <MainMenuContainer />
       </div>
     );
   }

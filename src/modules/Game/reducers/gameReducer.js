@@ -1,4 +1,4 @@
-import {NEW_PLAYER} from "../actions/gameActions";
+import {NEW_PLAYER, NEW_GAME} from "../actions/gameActions";
 
 const initialState = {
     gameInProgress: false,
@@ -13,17 +13,28 @@ const initialState = {
 
 export default (state = initialState, { type, ...payload}) =>{
     if (type === NEW_PLAYER){
+        console.log("ADDING NEW PLAYER", payload);
+        console.log("state:" , state);
         const { players } = state;
-        const newPlayer = {
+        console.log(players);
+        let newPlayer = {
             name: payload.name,
             bankRoll: 500,
-        }
-        players.concat(newPlayer);
+            hands: [],
+        };
+        console.log(newPlayer);
+        players.push(newPlayer);
+        console.log(players);
         return {
             ...state,
             players
         }
-
     }
+
+    if (type === NEW_GAME){
+        console.log("NEW GAME!!!!!!!")
+        console.log(state);
+    }
+    return state;
 
 }

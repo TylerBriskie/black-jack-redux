@@ -1,13 +1,12 @@
 import { connect } from 'react-redux';
 import MainMenu from './MainMenu';
-import {addNewPlayerAction} from './actions/MainMenuActions';
+import {newPlayerAction, newGameAction} from '../Game/actions/gameActions';
 
-export const mapStateToProps = state => ({
-
-});
+export const mapStateToProps = () => ({});
 
 export const mapDispatchToProps = dispatch => ({
-   addNewPlayer: playerName => dispatch(addNewPlayerAction(playerName))
+    newPlayerAction: playerName => dispatch(newPlayerAction(playerName)),
+    newGameAction: () => dispatch(newGameAction()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainMenu);
