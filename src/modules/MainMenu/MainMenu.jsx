@@ -27,6 +27,8 @@ class MainMenu extends Component {
 
     startGame(e){
         e.preventDefault();
+        console.log('state', this.state);
+        console.log('props', this.props);
         this.props.newGameAction();
     }
 

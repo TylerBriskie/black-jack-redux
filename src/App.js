@@ -6,8 +6,14 @@ import GameContainer from './modules/Game/GameContainer';
 
 
 class App extends Component {
+
+
   render() {
-    return (
+
+      console.log("app.js: state", this.state);
+
+
+      return (
       <div className="App">
         <Header
           title="React - Jack"
