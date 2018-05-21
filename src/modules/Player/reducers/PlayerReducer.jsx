@@ -1,7 +1,10 @@
 // import {CREATE_NEW_PLAYER} from "../actions/PlayerActions";
 //
 // const initialState = {
-//     players: [],
+//     hands: [],
+//     initialBet: 0,
+//     totalBet: 0,
+//
 // }
 //
 // export const playerReducer = (state = initialState, action) => {

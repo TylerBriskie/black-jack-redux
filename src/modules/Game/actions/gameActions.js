@@ -1,3 +1,6 @@
+import axios from 'axios';
+
+
 export const NEW_PLAYER = 'NEW_PLAYER';
 export const NEW_GAME = 'NEW_GAME';
 export const HIT = 'HIT';
@@ -10,5 +13,6 @@ export const newPlayerAction = (name) => {
 };
 
 export const newGameAction = () => {
+        console.log("new game!");
         return {type: NEW_GAME}
 };

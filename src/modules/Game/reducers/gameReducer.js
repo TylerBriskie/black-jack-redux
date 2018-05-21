@@ -1,4 +1,6 @@
 import {NEW_PLAYER, NEW_GAME} from "../actions/gameActions";
+import axios from 'axios';
+
 
 const initialState = {
     gameInProgress: false,
@@ -27,7 +29,21 @@ export default (state = initialState, { type, ...payload}) =>{
     }
 
     if (type === NEW_GAME){
-        return state;
+        let deckId = '';
+        let deck = [];
+        const request = axios.get('https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=6').then(res=>{
+            console.log(res.data);
+            deckId = res.data.deck_id;
+        }).then(()=> {
+            console.log(deckId);
+           deck = axios.get(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=312`);
+
+        });
+
+        return {
+            ...state,
+            deck
+        };
     }
     return state;
 
