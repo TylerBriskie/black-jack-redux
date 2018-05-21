@@ -1,4 +1,9 @@
-import {NEW_PLAYER, NEW_GAME} from "../actions/gameActions";
+import {
+    NEW_PLAYER,
+    NEW_GAME,
+    FETCH_CARDS_SUCCESS,
+    FETCH_CARDS_FAILURE
+} from "../actions/gameActions";
 import axios from 'axios';
 
 
@@ -10,13 +15,20 @@ const initialState = {
       score: 0,
       hasBlackjack: false,
     },
-    deck: [],
+    deck: {
+    },
+    playerTurn: 0,
 };
 
 export default (state = initialState, { type, ...payload}) =>{
     if (type === NEW_PLAYER){
+        if (payload.name === ''){
+            alert("Player Name must not be blank")
+            return state
+        }
         const { players } = state;
         let newPlayer = {
+            id: players.length,
             name: payload.name,
             bankRoll: 500,
             hands: [],
@@ -29,21 +41,26 @@ export default (state = initialState, { type, ...payload}) =>{
     }
 
     if (type === NEW_GAME){
-        let deckId = '';
-        let deck = [];
-        const request = axios.get('https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=6').then(res=>{
-            console.log(res.data);
-            deckId = res.data.deck_id;
-        }).then(()=> {
-            console.log(deckId);
-           deck = axios.get(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=312`);
+        console.log("new game (reducer)")
+        return state
 
-        });
-
+    }
+    if (type === FETCH_CARDS_SUCCESS){
+        console.log("whoa, api call sucessful");
+        console.log("payload from API: ", payload);
         return {
             ...state,
-            deck
-        };
+            deck: {
+                ...state.deck,
+                id: payload.payload.data.deck_id
+            }
+        }
+    }
+    if (type === FETCH_CARDS_FAILURE){
+        console.log("Fetching cards failed, payload: ", payload);
+        return {
+            state
+        }
     }
     return state;
 
