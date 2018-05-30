@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Player from '../Player/Player';
+import PlayerContainer from '../Player/PlayerContainer';
 // import Dealer from '../Dealer/Dealer';
 import axios from 'axios';
 
@@ -9,17 +9,20 @@ class Game extends Component {
 
     };
 
+    componentDidMount(){
+        // console.log("GAME MOUNTED, PROPS: ", this.props);
+    }
+
     render() {
-        console.log(this.props);
-        console.log(this.state);
+        console.log("PROPS: ", this.props);
         const players = this.props.players.map((player)=> {
-            return (<Player key={this.props.players.indexOf(player)}
-                     name={player.name}
-                     bankRoll = {player.bankRoll}
+            return (<PlayerContainer
+                 key={this.props.players.indexOf(player)}
+                 id={this.props.players.indexOf(player)}
+                 name={player.name}
+                 bankRoll = {player.bankRoll}
             />)
         });
-
-        console.log(players);
 
         return (
             <div className="game-container">

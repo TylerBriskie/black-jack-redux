@@ -2,14 +2,15 @@ import {
     NEW_PLAYER,
     NEW_GAME,
     FETCH_CARDS_SUCCESS,
-    FETCH_CARDS_FAILURE
+    FETCH_CARDS_FAILURE,
+    DEAL_CARD_SUCCESS,
+    DEAL_CARD_FAILURE,
 } from "../actions/gameActions";
 import axios from 'axios';
 
 
 const initialState = {
     gameInProgress: false,
-    players: [],
     dealer: {
       hand: [],
       score: 0,
@@ -21,33 +22,7 @@ const initialState = {
 };
 
 export default (state = initialState, { type, ...payload}) =>{
-    if (type === NEW_PLAYER){
-        if (payload.name === ''){
-            alert("Player Name must not be blank")
-            return state
-        }
-        const { players } = state;
-        let newPlayer = {
-            id: players.length,
-            name: payload.name,
-            bankRoll: 500,
-            hands: [],
-        };
-        players.push(newPlayer);
-        return {
-            ...state,
-            players
-        }
-    }
-
-    if (type === NEW_GAME){
-        console.log("new game (reducer)")
-        return state
-
-    }
     if (type === FETCH_CARDS_SUCCESS){
-        console.log("whoa, api call sucessful");
-        console.log("payload from API: ", payload);
         return {
             ...state,
             deck: {
@@ -62,6 +37,22 @@ export default (state = initialState, { type, ...payload}) =>{
             state
         }
     }
+    // if (type === DEAL_CARD_SUCCESS){
+    //     console.log("dealing card: ", payload)
+    //     console.log(state);
+    //     let currentPlayerId = state.playerTurn;
+    //     let currentHand = 0;
+    //     let playerHand = state.players[currentPlayerId].hands[currentHand];
+    //     return {
+    //         ...state}
+    // }
+    if (type === DEAL_CARD_FAILURE){
+        console.log("FAILURE DEALING A CARD, payload: ", payload);
+        return {
+            ...state
+        }
+    }
+
     return state;
 
 }

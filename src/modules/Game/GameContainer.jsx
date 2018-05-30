@@ -4,11 +4,13 @@ import Game from './Game';
 // import { } from './actions/gameActions';
 
 export const mapStateToProps = state => {
+    console.log("STATE IN GAME CONTAINER: ", state);
     return {
         state: state,
-        players: state.game.players,
+        players: state.player.players,
         dealer: state.game.dealer,
-        deck: state.game.deck
+        deck: state.game.deck,
+        playerTurn: state.game.playerTurn,
     }
 };
 

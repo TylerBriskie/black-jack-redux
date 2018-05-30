@@ -11,6 +11,7 @@ class MainMenu extends Component {
         this.addNewPlayer = this.addNewPlayer.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.startGame = this.startGame.bind(this);
+        this.dealACard = this.dealACard.bind(this);
     }
 
     addNewPlayer(e) {
@@ -31,6 +32,12 @@ class MainMenu extends Component {
         console.log('props', this.props);
         this.props.newGameAction();
     }
+    dealACard(e){
+        let deckId = this.props.deckId;
+        console.log("deckId: ", deckId);
+
+        this.props.dealACardAction(deckId);
+    }
 
     render() {
         return (
@@ -42,6 +49,7 @@ class MainMenu extends Component {
                     <input className="btn add-player-button" type="submit" value="Add New Player"></input>
                 </form>
                 <button className="btn new-game-button" onClick={this.startGame}>START GAME</button>
+                <button className="btn new-game-button" onClick={this.dealACard}>DEAL A CARD</button>
             </div>
         )
     }
