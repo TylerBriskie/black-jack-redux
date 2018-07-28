@@ -4,4 +4,24 @@
     border-radius: 25px;
     background-color:mistyrose;
     margin: 0 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.player-buttons, .player-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.player-buttons {
+    margin-bottom: 25px;
+}
+
+.wager-button {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    background-color: white;
 }
