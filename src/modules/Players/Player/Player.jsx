@@ -9,7 +9,6 @@ class Player extends React.Component {
     }
 
     render (){
-        console.log("PLAYER PROPS", this.props)
         return (
             <div className="player-object">
                 <div className="player-header">

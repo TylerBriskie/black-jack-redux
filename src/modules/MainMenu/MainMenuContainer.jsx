@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import MainMenu from './MainMenu';
-import {newPlayerAction, newGameAction} from '../Game/actions/gameActions';
-
+import { newGameAction} from '../Game/actions/gameActions';
+import { newPlayerAction } from '../Players/actions/playersActions';
 export const mapStateToProps = () => ({});
 
 export const mapDispatchToProps = dispatch => ({
