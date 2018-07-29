@@ -18,6 +18,7 @@ class Player extends React.Component {
 
                 <div className="player-buttons">
                     <button className="wager-button">-</button>
+                    <h4>{this.props.initialWager}</h4>
                     <button className="wager-button">+</button>
                 </div>
             </div>

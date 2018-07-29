@@ -11,19 +11,12 @@ class Game extends Component {
     };
 
     render() {
-        const players = this.props.players.map((player)=> {
-            return (<Player key={this.props.players.indexOf(player)}
-                     name={player.name}
-                     bankRoll = {player.bankRoll}
-            />)
-        });
-
         return (
             <div className="game-container">
                 <div className="dealer-container">
 
                 </div>
-                <PlayersContainer players={players}/>
+                <PlayersContainer players={this.props.players.map(player=>( player ))}/>
             </div>
         );
     }
