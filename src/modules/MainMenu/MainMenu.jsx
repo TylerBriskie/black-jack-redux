@@ -15,6 +15,10 @@ class MainMenu extends Component {
 
     addNewPlayer(e) {
         e.preventDefault();
+        if (this.state.playerName === ''){
+            alert('Player name cannot be blank')
+            return;
+        }
         this.props.newPlayerAction(this.state.playerName);
         this.setState({
             playerName: ''

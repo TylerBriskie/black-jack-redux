@@ -1,5 +1,5 @@
 import React from 'react';
-import Player from './Player/Player';
+import PlayerContainer from './Player/PlayerContainer';
 
 class Players extends React.Component {
     constructor(props){
@@ -10,10 +10,12 @@ class Players extends React.Component {
     render() {
         console.log(this.props);
         const players = this.props.players.map((player) => {
-            return (<Player key={this.props.players.indexOf(player)}
-                            name={player.name}
-                            bankRoll = {player.bankRoll}
-                            initialWager = {player.initialWager}
+        return (<PlayerContainer
+                    key={this.props.players.indexOf(player)}
+                    id ={player.id}
+                    name={player.name}
+                    bankRoll = {player.bankRoll}
+                    initialWager = {player.initialWager}
             />)
         });
         console.log(this.props);

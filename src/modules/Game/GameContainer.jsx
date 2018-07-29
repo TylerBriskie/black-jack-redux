@@ -5,6 +5,7 @@ import Game from './Game';
 
 export const mapStateToProps = state => {
     return {
+        gameInProgress: state.game.gameInProgress,
         dealer: state.game.dealer,
         deck: state.game.deck
     }
