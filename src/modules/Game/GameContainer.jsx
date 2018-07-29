@@ -7,7 +7,7 @@ export const mapStateToProps = state => {
     return {
         gameInProgress: state.game.gameInProgress,
         dealer: state.game.dealer,
-        deck: state.game.deck
+        deck: state.game.deck.cards
     }
 };
 

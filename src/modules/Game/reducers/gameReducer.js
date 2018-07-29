@@ -1,4 +1,4 @@
-import { NEW_GAME} from "../actions/gameActions";
+import { NEW_GAME, FETCH_DECK } from "../actions/gameActions";
 
 const initialState = {
     gameInProgress: false,
@@ -18,7 +18,13 @@ export default (state = initialState, { type, ...payload}) =>{
         };
     }
 
-
-    return {...state};
+    if (type === FETCH_DECK){
+        console.log('got deck', payload);
+        return {
+            ...state,
+            deck: payload,
+        }
+    }
+    return state;
 
 }

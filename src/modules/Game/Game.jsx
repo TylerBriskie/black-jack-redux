@@ -7,18 +7,14 @@ import './Game.css'
 class Game extends Component {
     constructor(props){
         super(props);
-        this.state = {
-            displayMenu: false,
-        }
     };
 
     render() {
-
+        console.log(this.props.deck);
         return (
             <div className="game-container">
                 <div className="dealer-container">
                 </div>
-                {this.state.displayMenu ? <h4>TRUE</h4> : <h4>FALSE</h4>}
                 <PlayersContainer />
                 <MainMenuContainer />
             </div>
