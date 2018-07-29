@@ -5,8 +5,6 @@ import Game from './Game';
 
 export const mapStateToProps = state => {
     return {
-        state: state,
-        players: state.players.players,
         dealer: state.game.dealer,
         deck: state.game.deck
     }

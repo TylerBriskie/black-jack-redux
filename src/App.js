@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
 import Header from './modules/Header/Header';
-import MainMenuContainer from './modules/MainMenu/MainMenuContainer';
 import GameContainer from './modules/Game/GameContainer';
 
 
 class App extends Component {
   render() {
+
     return (
       <div className="App">
         <Header
@@ -14,7 +14,6 @@ class App extends Component {
           subtitle="Redux"
         />
         <GameContainer />
-        <MainMenuContainer />
       </div>
     );
   }

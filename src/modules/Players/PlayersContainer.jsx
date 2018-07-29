@@ -1,9 +1,11 @@
 import { connect } from 'react-redux';
 import Players from './Players';
+import { getPlayers } from './selectors/playersSelectors';
 
 export const mapStateToProps = state => {
     return {
-        players: state.players.players
+        state: state,
+        players: getPlayers(state),
     }
 };
 

@@ -26,11 +26,11 @@ export default (state = initialState, { type, ...payload}) =>{
     //     }
     // }
 
-    if (type === NEW_GAME){
-        return state;
-    }
+    // if (type === NEW_GAME){
+    //     return state;
+    // }
 
 
-    return state;
+    return {...state};
 
 }
