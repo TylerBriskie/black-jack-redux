@@ -1,4 +1,5 @@
 import { NEW_PLAYER, INCREASE_BET, DECREASE_BET } from "../actions/playersActions";
+import { DEAL_CARD } from '../../Game/actions/gameActions';
 
 const initialState = {
     players: [],
@@ -25,6 +26,10 @@ export default (state = initialState, { type, ...payload}) =>{
             ...state,
             players
         }
+    }
+
+    if (type === DEAL_CARD){
+        console.log('CARD DEALT', payload);
     }
 
     if (type === INCREASE_BET){

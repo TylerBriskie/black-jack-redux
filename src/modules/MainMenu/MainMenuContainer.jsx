@@ -2,11 +2,15 @@ import { connect } from 'react-redux';
 import MainMenu from './MainMenu';
 import { newGameAction} from '../Game/actions/gameActions';
 import { newPlayerAction } from '../Players/actions/playersActions';
-export const mapStateToProps = () => ({});
+import { getPlayers } from '../Players/selectors/playersSelectors';
+
+export const mapStateToProps = state => ({
+    playerCount: getPlayers(state).length,
+});
 
 export const mapDispatchToProps = dispatch => ({
     newPlayerAction: playerName => dispatch(newPlayerAction(playerName)),
-    newGameAction: () => dispatch(newGameAction()),
+    newGameAction: (playerCount, deckCount) => dispatch(newGameAction(playerCount, deckCount)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainMenu);
