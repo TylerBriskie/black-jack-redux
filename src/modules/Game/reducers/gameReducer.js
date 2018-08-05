@@ -12,17 +12,11 @@ const initialState = {
 
 export default (state = initialState, { type, ...payload}) =>{
     if (type === NEW_GAME){
-        return {
-            ...state,
-            gameInProgress: true,
-        };
-    }
-
-    if (type === FETCH_DECK){
         console.log('got deck', payload);
         return {
             ...state,
             deck: payload,
+            gameInProgress: true,
         }
     }
     return state;

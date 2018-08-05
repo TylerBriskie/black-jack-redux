@@ -9,6 +9,10 @@ export default (state = initialState, { type, ...payload}) =>{
         console.log('adding player');
         console.log(state);
         const { players } = state;
+        if (players.length >= 4){
+            alert("Sorry, the table is full.");
+            return state;
+        }
         let newPlayer = {
             id: Date.now(),
             name: payload.name,

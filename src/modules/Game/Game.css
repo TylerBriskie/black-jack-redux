@@ -4,3 +4,11 @@
     background-color: white;
     border: black 2px solid;
 }
+
+.game-container {
+    display: flex;
+    height: 65vh;
+    border: red 5px solid;
+    flex-direction: column;
+    justify-content: flex-end;
+}

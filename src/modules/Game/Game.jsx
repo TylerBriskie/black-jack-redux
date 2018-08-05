@@ -13,8 +13,6 @@ class Game extends Component {
         console.log(this.props.deck);
         return (
             <div className="game-container">
-                <div className="dealer-container">
-                </div>
                 <PlayersContainer />
                 <MainMenuContainer />
             </div>
