@@ -16,7 +16,7 @@ export const mapStateToProps = state => {
 export const mapDispatchToProps = dispatch => ({
     increaseBet: id => dispatch(increaseBetAction(id)),
     decreaseBet: id => dispatch(decreaseBetAction(id)),
-    hit: id => dispatch(hitAction(id)),
+    // hit: id => dispatch(hitAction(id)),
     stay: id => dispatch(stayAction(id)),
     doubleDown: id => dispatch(doubleDownAction(id)),
 });

@@ -31,7 +31,7 @@ class MainMenu extends Component {
 
     startGame(e){
         e.preventDefault();
-        this.props.newGameAction(this.props.playerCount, 6);
+        this.props.newGameAction(this.props.players, 6);
     }
 
     render() {

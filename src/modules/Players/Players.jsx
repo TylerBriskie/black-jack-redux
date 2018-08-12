@@ -8,18 +8,22 @@ class Players extends React.Component {
     };
 
     render() {
-        console.log(this.props);
+        const hit = id => {
+            this.props.hit(id, 0);
+        };
+
         const players = this.props.players.map((player) => {
         return (<PlayerContainer
                     key={this.props.players.indexOf(player)}
                     id ={player.id}
                     name={player.name}
+                    hands={player.hands}
+                    hit={hit}
                     bankRoll = {player.bankRoll}
                     initialWager = {player.initialWager}
             />)
         });
-        console.log(this.props);
-        console.log(players);
+
         return (
             <div className="players-container">
                 {players}

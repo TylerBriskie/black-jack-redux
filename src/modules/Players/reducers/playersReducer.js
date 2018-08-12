@@ -1,4 +1,4 @@
-import { NEW_PLAYER, INCREASE_BET, DECREASE_BET } from "../actions/playersActions";
+import { NEW_PLAYER, INCREASE_BET, DECREASE_BET, HIT } from "../actions/playersActions";
 import { DEAL_CARD } from '../../Game/actions/gameActions';
 
 const initialState = {
@@ -7,8 +7,6 @@ const initialState = {
 
 export default (state = initialState, { type, ...payload}) =>{
     if (type === NEW_PLAYER){
-        console.log('adding player');
-        console.log(state);
         const { players } = state;
         if (players.length >= 4){
             alert("Sorry, the table is full.");
@@ -30,6 +28,22 @@ export default (state = initialState, { type, ...payload}) =>{
 
     if (type === DEAL_CARD){
         console.log('CARD DEALT', payload);
+        if (payload.playerId === 'dealer'){
+            return state;
+        }
+        const {players} = state;
+        const player = players.find(player => player.id === payload.playerId);
+        if (player.hands.length === 0){
+            console.log('no hands found');
+            player.hands[0]={
+                cards: [payload.card],
+            };
+        } else {
+            player.hands[payload.currentHand].cards.push(payload.card);
+        }
+        return {
+            ...state,
+        }
     }
 
     if (type === INCREASE_BET){

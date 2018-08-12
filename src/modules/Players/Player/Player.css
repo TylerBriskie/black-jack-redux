@@ -1,13 +1,48 @@
+@media only screen and (max-width: 1630px) {
+    body {
+        background-color: lightblue;
+    }
+    .card-container {
+        display: table-cell;
+        width: 40%;
+        height: 80%;
+    }
+
+    img {
+        height: 30%;
+    }
+
+}
 .player-object {
     height: 40vh;
-    width: 380px;
-    border-radius: 25px;
+    width: 20vw;
+    border-radius: 10%;
     background-color:mistyrose;
     margin: 0 2em;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
 }
+.hand-values {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.hand-cards {
+    display: table;
+    table-layout: fixed;
+    width: 50%;
+    max-width: 100%;
+}
+.card-container {
+    display: table-cell;
+    width: 50%;
+}
+
+img {
+    height: 80%;
+}
+
 
  .player-header {
     display: flex;
@@ -16,7 +51,7 @@
 }
 
 .player-buttons {
-    margin-bottom: 25px;
+    justify-self: flex-end;
 }
 .player-buttons > div {
     display: flex;
@@ -42,4 +77,23 @@
     height: 65px;
     border-radius: 50%;
     background-color: white;
+}
+
+.player-single-hand {
+    display: flex;
+    flex-direction: column;
+}
+@media only screen and (max-width: 1630px) {
+    body {
+        background-color: lightblue;
+    }
+    .card-container {
+        display: table-cell;
+        width: 40%;
+    }
+
+    img {
+        height: 60%;
+    }
+
 }

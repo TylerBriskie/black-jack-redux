@@ -5,7 +5,7 @@ import { newPlayerAction } from '../Players/actions/playersActions';
 import { getPlayers } from '../Players/selectors/playersSelectors';
 
 export const mapStateToProps = state => ({
-    playerCount: getPlayers(state).length,
+    players: getPlayers(state),
 });
 
 export const mapDispatchToProps = dispatch => ({
