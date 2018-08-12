@@ -40,10 +40,26 @@ export const hitAction = (id, currentHand) => {
     }
 };
 
-export const stayAction = id => ({
-    type: STAY,
-    id,
-});
+export const stayAction = (id, currentHand) => {
+
+    return (dispatch, getState) => {
+        const state = getState();
+        const players = state.players.players;
+        const currentPlayer = players.find(player => player.id === id);
+        const currentPlayerIndex = players.indexOf(currentPlayer);
+        let nextPlayerId;
+        if (players.length === currentPlayerIndex +1){
+            nextPlayerId = 'DEALER';
+        } else {
+            nextPlayerId = players[currentPlayerIndex+1].id;
+        }
+        dispatch({
+            type: STAY,
+            playerId: id,
+            nextPlayerId
+        })
+    }
+};
 
 export const doubleDownAction = id => ({
     type: DOUBLE_DOWN,

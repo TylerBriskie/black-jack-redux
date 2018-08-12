@@ -11,7 +11,10 @@ class Players extends React.Component {
         const hit = id => {
             this.props.hit(id, 0);
         };
-        const stay = id => this.props.stay(id, 0);
+        const stay = id => {
+            console.log('player stayed: ', id);
+            this.props.stay(id, 0)
+        };
         const bust = id => this.props.bust(id, 0);
         const activePlayer = this.props.playerTurn;
         const players = this.props.players.map((player) => {

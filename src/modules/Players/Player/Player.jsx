@@ -1,6 +1,5 @@
 import React from 'react';
 import './Player.css';
-import { getHardValue, getSoftValue } from '../../Game/helpers/gameLogic';
 class Player extends React.Component {
 
     constructor(props){
@@ -19,9 +18,9 @@ class Player extends React.Component {
 
         const hit = () => this.props.hit(this.props.id, 0);
 
-        const bust = () => this.props.bust(this.props.id, 0);
-
         const stay = () => this.props.stay(this.props.id, 0);
+
+        // const bust = () => this.props.bust(this.props.id, 0);
 
         const doubleDown = () => this.props.doubleDown(this.props.id);
 

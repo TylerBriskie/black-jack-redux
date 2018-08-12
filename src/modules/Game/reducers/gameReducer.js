@@ -1,5 +1,5 @@
 import { NEW_GAME, PAUSE_GAME } from "../actions/gameActions";
-import { BUST } from '../../Players/actions/playersActions';
+import {BUST, STAY} from '../../Players/actions/playersActions';
 
 const initialState = {
     gameInProgress: false,
@@ -34,8 +34,15 @@ export default (state = initialState, { type, ...payload}) =>{
     }
     if (type === BUST){
         console.log('player busted, moving onto next player');
+
         return {
             ...state,
+        }
+    }
+    if (type === STAY){
+        return {
+            ...state,
+            playerTurn: payload.nextPlayerId,
         }
     }
     return state;
