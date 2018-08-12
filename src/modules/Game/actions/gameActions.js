@@ -2,9 +2,14 @@ import axios from 'axios';
 export const NEW_GAME = 'NEW_GAME';
 export const FETCH_DECK = 'FETCH_DECK';
 export const DEAL_CARD= 'DEAL_CARD';
+export const PAUSE_GAME = 'PAUSE_GAME';
 
 export const newGameAction = (players, deckCount) => {
-    return (dispatch) => {
+    return (dispatch, getState) => {
+        const state = getState();
+        console.log(state.players.players);
+        const playerOneId = state.players.players[0].id;
+        console.log("PLAYER ONE ID: ", playerOneId);
         axios.get(`https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=${deckCount}`)
             .then(data => {
                 const {deck_id} = data.data;
@@ -18,12 +23,12 @@ export const newGameAction = (players, deckCount) => {
                             const card = cards.pop();
                             dispatch({ type: DEAL_CARD, card, playerId, currentHand: 0, })
                         }
-                        dispatch({ type: NEW_GAME, cards, })
+                        dispatch({ type: NEW_GAME, cards, activePlayer: playerOneId })
                     });
             });
     }
 };
 
-export const dealCardsAction = () => {
-
-};
+export const pauseGameAction = () => ({
+   type: PAUSE_GAME,
+});

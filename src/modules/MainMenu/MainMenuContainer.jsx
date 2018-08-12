@@ -6,6 +6,7 @@ import { getPlayers } from '../Players/selectors/playersSelectors';
 
 export const mapStateToProps = state => ({
     players: getPlayers(state),
+    gameInProgress: state.game.gameInProgress,
 });
 
 export const mapDispatchToProps = dispatch => ({

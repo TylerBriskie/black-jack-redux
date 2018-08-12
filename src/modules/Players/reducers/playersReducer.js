@@ -1,5 +1,6 @@
-import { NEW_PLAYER, INCREASE_BET, DECREASE_BET, HIT } from "../actions/playersActions";
+import { NEW_PLAYER, INCREASE_BET, DECREASE_BET, HIT, BUST} from "../actions/playersActions";
 import { DEAL_CARD } from '../../Game/actions/gameActions';
+import {getHardValue, getSoftValue} from "../../Game/helpers/gameLogic";
 
 const initialState = {
     players: [],
@@ -32,6 +33,8 @@ export default (state = initialState, { type, ...payload}) =>{
             return state;
         }
         const {players} = state;
+        console.log(players);
+        console.log(payload)
         const player = players.find(player => player.id === payload.playerId);
         if (player.hands.length === 0){
             console.log('no hands found');
@@ -39,8 +42,22 @@ export default (state = initialState, { type, ...payload}) =>{
                 cards: [payload.card],
             };
         } else {
-            player.hands[payload.currentHand].cards.push(payload.card);
+            const hand = player.hands[payload.currentHand];
+
+            hand.cards.push(payload.card);
+            hand.softValue = getSoftValue(hand);
+            hand.hardValue = getHardValue(hand);
+            if (hand.hardValue === "BUST"){
+                hand.isBusted = true;
+            }
         }
+        return {
+            ...state,
+        }
+    }
+
+    if (type === BUST){
+        console.log('player busts', payload);
         return {
             ...state,
         }

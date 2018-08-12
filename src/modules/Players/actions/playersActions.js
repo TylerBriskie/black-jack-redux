@@ -5,6 +5,7 @@ export const DECREASE_BET = "DECREASE_BET";
 export const HIT = "HIT";
 export const STAY = "STAY";
 export const DOUBLE_DOWN = "DOUBLE_DOWN";
+export const BUST = "BUST";
 export const SPLIT = "SPLIT";
 
 
@@ -47,6 +48,12 @@ export const stayAction = id => ({
 export const doubleDownAction = id => ({
     type: DOUBLE_DOWN,
     id,
+});
+
+export const bustAction = (id, currentHand) => ({
+    type: BUST,
+    id,
+    currentHand,
 });
 
 export const splitAction = id => ({

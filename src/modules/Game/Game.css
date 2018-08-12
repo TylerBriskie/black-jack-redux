@@ -7,8 +7,9 @@
 
 .game-container {
     display: flex;
-    height: 65vh;
-    border: red 5px solid;
+    height: 80vh;
+    width: 100vw;
+    border: cyan 5px solid;
     flex-direction: column;
     justify-content: flex-end;
 }

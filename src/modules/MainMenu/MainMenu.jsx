@@ -43,7 +43,9 @@ class MainMenu extends Component {
                            placeholder="Enter Player Name"/>
                     <input className="btn add-player-button" type="submit" value="Add New Player"></input>
                 </form>
-                <button className="btn new-game-button" onClick={this.startGame}>START GAME</button>
+                <button className="btn new-game-button" onClick={this.startGame}>
+                    {this.props.gameInProgress ? "RESUME" : "START GAME"}
+                </button>
             </div>
         )
     }

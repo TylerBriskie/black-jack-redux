@@ -1,28 +1,23 @@
-@media only screen and (max-width: 1630px) {
-    body {
-        background-color: lightblue;
-    }
-    .card-container {
-        display: table-cell;
-        width: 40%;
-        height: 80%;
-    }
-
-    img {
-        height: 30%;
-    }
-
-}
 .player-object {
     height: 40vh;
     width: 20vw;
+    color: cyan;
     border-radius: 10%;
-    background-color:mistyrose;
+    background-color:purple;
+    border: 3px cyan solid;
     margin: 0 2em;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    transition: 1s linear all;
 }
+.active-player {
+    height: 48vh;
+    width: 22vw;
+    border: 9px white solid;
+    transition: 1s linear all;
+}
+
 .hand-values {
     display: flex;
     flex-direction: row;
@@ -94,6 +89,21 @@ img {
 
     img {
         height: 60%;
+    }
+
+}
+@media only screen and (max-width: 1200px) {
+    body {
+        background-color: hotpink;
+    }
+    .card-container {
+        display: table-cell;
+        width: 40%;
+        height: 80%;
+    }
+
+    img {
+        height: 50%;
     }
 
 }

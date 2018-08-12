@@ -1,0 +1,48 @@
+.pause-menu {
+    color: cyan;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: black;
+    border: cyan 5px solid;
+    -webkit-border-radius: 5%;
+    -moz-border-radius: 5%;
+    border-radius: 40px;
+    width: 40vw;
+    height: 30vh;
+    position: fixed;
+    left: 30vw;
+    bottom: 50vh;
+    margin: 0 auto;
+    font-family: 'Raleway', sans-serif;
+}
+
+.pause-backdrop {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0,0,0,.7);,
+    padding: 50,
+}
+
+.stats {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.btn {
+    border-radius: 40px;
+    font-family: 'Raleway', sans-serif;
+}
+
+
+.resume-button {
+    width: 80%;
+    margin: 2% auto;
+    padding: 1%;
+    border: cyan solid 3px;
+    background-color: mediumpurple;
+    color: cyan;
+}
