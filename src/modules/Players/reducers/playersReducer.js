@@ -28,7 +28,6 @@ export default (state = initialState, { type, ...payload}) =>{
     }
 
     if (type === DEAL_CARD){
-        console.log('CARD DEALT', payload);
         if (payload.playerId === 'dealer'){
             return state;
         }
@@ -37,16 +36,18 @@ export default (state = initialState, { type, ...payload}) =>{
         console.log(payload)
         const player = players.find(player => player.id === payload.playerId);
         if (player.hands.length === 0){
-            console.log('no hands found');
             player.hands[0]={
                 cards: [payload.card],
             };
         } else {
             const hand = player.hands[payload.currentHand];
-
             hand.cards.push(payload.card);
             hand.softValue = getSoftValue(hand);
             hand.hardValue = getHardValue(hand);
+            console.log(hand);
+            if (hand.cards.length === 2 && hand.cards[0].value === hand.cards[1].value){
+                hand.isSplittable = true;
+            }
             if (hand.hardValue === "BUST"){
                 hand.isBusted = true;
             }
