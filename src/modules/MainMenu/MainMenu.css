@@ -1,12 +1,18 @@
 .main-menu {
-    background-color: white;
-        -webkit-border-radius: 5%;
-        -moz-border-radius: 5%;
+    color: cyan;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: black;
+    border: cyan 5px solid;
+    -webkit-border-radius: 5%;
+    -moz-border-radius: 5%;
     border-radius: 40px;
     width: 40vw;
+    height: 20vh;
     position: fixed;
-    bottom: 0;
     left: 30vw;
+    bottom: 60vh;
     margin: 0 auto;
     font-family: 'Raleway', sans-serif;
 }
@@ -18,16 +24,17 @@
 }
 
 .add-player-button {
-    color: #F3C620;
+    color: cyan;
     padding: 1%;
-    background-color: #011E73;
+    background-color: mediumpurple;
     width: 25%;
 }
 
 .new-game-button {
-    width: 50%;
+    width: 80%;
     margin: 2% auto;
     padding: 1%;
-    background-color: #01431E;
-    color: #F3C620;
+    border: cyan solid 3px;
+    background-color: mediumpurple;
+    color: cyan;
 }

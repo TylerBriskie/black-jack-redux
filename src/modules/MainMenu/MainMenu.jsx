@@ -38,11 +38,15 @@ class MainMenu extends Component {
         return (
             <div className="main-menu">
                 <h1>Main Menu</h1>
-                <form onSubmit={this.addNewPlayer}>
-                    <input type="text" value={this.state.playerName} onChange={this.handleChange}
-                           placeholder="Enter Player Name"/>
-                    <input className="btn add-player-button" type="submit" value="Add New Player"></input>
-                </form>
+                {this.props.players.length < 4 ?
+                    <form onSubmit={this.addNewPlayer}>
+
+                        <input type="text" value={this.state.playerName} onChange={this.handleChange}
+                               placeholder="Enter Player Name"/>
+                        <input className="btn add-player-button" type="submit" value="Add New Player"></input>
+                    </form> :
+                    <h1>Table Full!</h1>
+                }
                 <button className="btn new-game-button" onClick={this.startGame}>
                     {this.props.gameInProgress ? "RESUME" : "START GAME"}
                 </button>
