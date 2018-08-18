@@ -36,21 +36,24 @@ class Player extends React.Component {
                 });
                 const hardValue = hand.hardValue;
                 const softValue = hand.softValue;
+                const isBusted = hand.isBusted;
                 return (
                 <div className="player-single-hand">
-                    <div className="hand-values">
-                        {softValue !== hardValue ?
-                            (<div className="hand-values">
+                        {isBusted ?
+                            (
+                                <div className="hand=values"> <h1>BUST</h1></div>
+                            ) :
+                            softValue !== hardValue && softValue < 22 ?
+                                (<div className="hand-values">
                                     <h1>{hardValue}</h1>
                                     <h1>(soft {softValue})</h1>
                                 </div>
-                            )
-
-                            :<div className="hand-values">
-                                <h1>{hardValue}</h1>
-                            </div>
+                                )
+                                :
+                                <div className="hand-values">
+                                    <h1>{hardValue}</h1>
+                                </div>
                         }
-                    </div>
                     <div className="hand-cards">
                         {cards}
                     </div>

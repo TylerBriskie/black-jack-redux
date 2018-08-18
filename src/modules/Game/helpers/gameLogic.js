@@ -15,38 +15,32 @@ const cardValues = {
     '2': 2,
 };
 
-export const getSoftValue = hand => {
-    let value = 0;
-    for (let i = 0; i< hand.cards.length; i++){
-        let aceCount = 0;
-        if (hand.cards[i].value === 'ACE'){
-            aceCount ++;
-            if (aceCount === 0 || getHardValue(hand) + 11 > 21){
-                value += 1
-            } else {
-                value += 11
-            }
-        }
-        else {
-            value += cardValues[hand.cards[i].value]
-        }
-    }
-    return value;
-};
-
-export const getHardValue = hand => {
-    let value = 0;
+export const getValues = hand => {
+    let value = {
+        soft: 0,
+        hard: 0,
+        busted: false,
+    };
+    let aceCount = 0;
     for (let i = 0; i< hand.cards.length; i++){
         if (hand.cards[i].value === 'ACE'){
-            value += 11;
-        }
-        else {
-            value += cardValues[hand.cards[i].value]
+            aceCount++;
+        } else {
+            value.hard += cardValues[hand.cards[i].value];
+            value.soft += cardValues[hand.cards[i].value];
         }
     }
-    if (value > 21){
-        // this.props.bust(this.props.id);
-        return "BUST"
+    for (let j = 0; j < aceCount; j++){
+        if (value.hard < 11){
+            value.hard += 1;
+            value.soft += 11;
+        } else {
+            value.soft += 11;
+            value.hard += 1;
+        }
+    }
+    if (value.hard > 21){
+        value.busted = true;
     }
     return value;
 };
