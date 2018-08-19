@@ -1,9 +1,11 @@
 import axios from 'axios';
 import {STAY} from "../../Players/actions/playersActions";
+import {getValues} from "../helpers/gameLogic";
 export const NEW_GAME = 'NEW_GAME';
 export const FETCH_DECK = 'FETCH_DECK';
 export const DEAL_CARD= 'DEAL_CARD';
 export const PAUSE_GAME = 'PAUSE_GAME';
+export const BUST = 'BUST';
 
 export const newGameAction = (players, deckCount) => {
     return (dispatch, getState) => {
@@ -33,16 +35,34 @@ export const newGameAction = (players, deckCount) => {
 export const hitAction = (playerId, currentHand) => {
     return (dispatch, getState) => {
         const state = getState();
+        const player = state.players.players.find(player => player.id === playerId);
+        console.log(player);
+        const hand = {cards: []};
+        for (var i = 0; i<player.hands[currentHand].cards.length; i++){
+            hand.cards.push(player.hands[currentHand].cards[i])
+        }
         const deck = state.game.deck.cards;
         const card = deck.pop();
+        hand.cards.push(card);
+        const {busted} = getValues(hand);
 
-        dispatch({
-            type: DEAL_CARD,
-            playerId,
-            card,
-            currentHand,
-            deck,
-        })
+        if (busted){
+            dispatch({
+                type: BUST,
+                playerId,
+                card,
+                currentHand,
+                deck,
+            })
+        } else {
+            dispatch({
+                type: DEAL_CARD,
+                playerId,
+                card,
+                currentHand,
+                deck,
+            })
+        }
     }
 };
 

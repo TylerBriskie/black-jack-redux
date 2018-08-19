@@ -55,7 +55,13 @@ export default (state = initialState, { type, ...payload}) =>{
     }
 
     if (type === BUST){
-        console.log('player busts', payload);
+        const {players} = state;
+        const player = players.find(player => player.id === payload.playerId);
+        const hand = player.hands[payload.currentHand];
+        hand.cards.push(payload.card);
+        hand.softValue = 'BUST';
+        hand.hardValue = 'BUST';
+        hand.isBusted = 'BUST';
         return {
             ...state,
         }
