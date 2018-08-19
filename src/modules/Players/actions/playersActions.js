@@ -23,44 +23,6 @@ export const decreaseBetAction = id => ({
     id,
 });
 
-export const hitAction = (id, currentHand) => {
-    return (dispatch, getState) => {
-        const state = getState();
-        console.log('current hand: ', currentHand);
-        console.log(state);
-        const deck = state.game.deck.cards;
-        const card = deck.pop();
-        dispatch({
-            type: DEAL_CARD,
-            playerId: id,
-            card,
-            currentHand,
-            deck,
-        })
-    }
-};
-
-export const stayAction = (id, currentHand) => {
-
-    return (dispatch, getState) => {
-        const state = getState();
-        const players = state.players.players;
-        const currentPlayer = players.find(player => player.id === id);
-        const currentPlayerIndex = players.indexOf(currentPlayer);
-        let nextPlayerId;
-        if (players.length === currentPlayerIndex +1){
-            nextPlayerId = 'DEALER';
-        } else {
-            nextPlayerId = players[currentPlayerIndex+1].id;
-        }
-        dispatch({
-            type: STAY,
-            playerId: id,
-            nextPlayerId
-        })
-    }
-};
-
 export const doubleDownAction = id => ({
     type: DOUBLE_DOWN,
     id,

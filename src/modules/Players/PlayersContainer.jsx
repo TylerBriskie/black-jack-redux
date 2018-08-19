@@ -1,7 +1,8 @@
 import { connect } from 'react-redux';
 import Players from './Players';
 import { getPlayers } from './selectors/playersSelectors';
-import {hitAction, bustAction, stayAction} from "./actions/playersActions";
+import {bustAction } from "./actions/playersActions";
+import {hitAction, stayAction } from '../Game/actions/gameActions';
 
 export const mapStateToProps = state => {
     return {

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {STAY} from "../../Players/actions/playersActions";
 export const NEW_GAME = 'NEW_GAME';
 export const FETCH_DECK = 'FETCH_DECK';
 export const DEAL_CARD= 'DEAL_CARD';
@@ -28,6 +29,43 @@ export const newGameAction = (players, deckCount) => {
             });
     }
 };
+
+export const hitAction = (playerId, currentHand) => {
+    return (dispatch, getState) => {
+        const state = getState();
+        const deck = state.game.deck.cards;
+        const card = deck.pop();
+
+        dispatch({
+            type: DEAL_CARD,
+            playerId,
+            card,
+            currentHand,
+            deck,
+        })
+    }
+};
+
+export const stayAction = (id, currentHand) => {
+    return (dispatch, getState) => {
+        const state = getState();
+        const players = state.players.players;
+        const currentPlayer = players.find(player => player.id === id);
+        const currentPlayerIndex = players.indexOf(currentPlayer);
+        let nextPlayerId;
+        if (players.length === currentPlayerIndex +1){
+            nextPlayerId = 'DEALER';
+        } else {
+            nextPlayerId = players[currentPlayerIndex+1].id;
+        }
+        dispatch({
+            type: STAY,
+            playerId: id,
+            nextPlayerId
+        })
+    }
+};
+
 
 export const pauseGameAction = () => ({
    type: PAUSE_GAME,
