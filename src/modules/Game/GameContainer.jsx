@@ -11,6 +11,8 @@ export const mapStateToProps = state => {
         deck: state.game.deck.cards,
         playerCount: getPlayers(state).players.length,
         playerTurn: state.game.playerTurn,
+        payingOutWinners: state.game.payingOutWinners,
+        gameOver: state.game.gameOver,
     }
 };
 

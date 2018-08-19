@@ -11,35 +11,19 @@ class Game extends Component {
         super(props);
     };
 
-    componentDidMount(){
-        if (this.props.playerTurn === "DEALER" && this.props.dealer.hand.softValue < 17){
-            console.log('dealer turn, hitting');
-            console.log(this.props.dealer);
-            this.props.dealerHit();
-        } else if (this.props.playerTurn === 'DEALER') {
-            console.log('dealer STAYS');
-            this.props.dealerStay();
-        }
-    }
-
     render() {
         const pauseGame = () => {
             this.props.pauseGame();
-        };
-        const dealerHit = () => {
-            this.props.dealerHit();
-        };
-        const dealerStay = () => {
-            this.props.dealerStay();
-        };
-        const gameOver = () => {
-            // this.props.gameOver();
-            console.log('game over');
         };
 
         return (
             <div className="game-container">
                 <DealerContainer cards={this.props.dealer.hand.cards} soft={this.props.dealer.hand.softValue} hard={this.props.dealer.hand.hardValue}/>
+                {this.props.payingOutWinners ? (
+                    <div>
+                        <h1>PAYING OUT WINNERS</h1>
+                    </div>
+                ) : null}
                 <PlayersContainer playerTurn ={this.props.playerTurn} />
                 {
                     this.props.gameInProgress ?
