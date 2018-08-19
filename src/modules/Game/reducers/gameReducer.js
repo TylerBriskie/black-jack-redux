@@ -45,6 +45,13 @@ export default (state = initialState, { type, ...payload}) =>{
         }
     }
 
+    if (type === BUST){
+        return {
+            ...state,
+            playerTurn: payload.nextPlayerId,
+        }
+    }
+
     if (type === PAUSE_GAME){
         const {gamePaused} = state;
         return {
@@ -52,13 +59,7 @@ export default (state = initialState, { type, ...payload}) =>{
             gamePaused: !gamePaused,
         }
     }
-    if (type === BUST){
-        console.log('player busted, moving onto next player');
 
-        return {
-            ...state,
-        }
-    }
     if (type === STAY){
         return {
             ...state,

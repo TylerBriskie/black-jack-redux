@@ -35,8 +35,9 @@ export const newGameAction = (players, deckCount) => {
 export const hitAction = (playerId, currentHand) => {
     return (dispatch, getState) => {
         const state = getState();
-        const player = state.players.players.find(player => player.id === playerId);
-        console.log(player);
+        const players = state.players.players;
+        const player = players.find(player => player.id === playerId);
+
         const hand = {cards: []};
         for (var i = 0; i<player.hands[currentHand].cards.length; i++){
             hand.cards.push(player.hands[currentHand].cards[i])
@@ -47,12 +48,20 @@ export const hitAction = (playerId, currentHand) => {
         const {busted} = getValues(hand);
 
         if (busted){
+            const currentPlayerIndex = players.indexOf(player);
+            let nextPlayerId;
+            if (players.length === currentPlayerIndex +1){
+                nextPlayerId = 'DEALER';
+            } else {
+                nextPlayerId = players[currentPlayerIndex+1].id;
+            }
             dispatch({
                 type: BUST,
                 playerId,
                 card,
                 currentHand,
                 deck,
+                nextPlayerId
             })
         } else {
             dispatch({
@@ -66,11 +75,11 @@ export const hitAction = (playerId, currentHand) => {
     }
 };
 
-export const stayAction = (id, currentHand) => {
+export const stayAction = (playerId, currentHand) => {
     return (dispatch, getState) => {
         const state = getState();
         const players = state.players.players;
-        const currentPlayer = players.find(player => player.id === id);
+        const currentPlayer = players.find(player => player.id === playerId);
         const currentPlayerIndex = players.indexOf(currentPlayer);
         let nextPlayerId;
         if (players.length === currentPlayerIndex +1){
@@ -78,9 +87,10 @@ export const stayAction = (id, currentHand) => {
         } else {
             nextPlayerId = players[currentPlayerIndex+1].id;
         }
+
         dispatch({
             type: STAY,
-            playerId: id,
+            playerId,
             nextPlayerId
         })
     }
