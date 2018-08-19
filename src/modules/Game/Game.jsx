@@ -15,7 +15,20 @@ class Game extends Component {
         const pauseGame = () => {
             this.props.pauseGame();
         };
-        console.log(this.props.playerTurn);
+        const dealerHit = () => {
+            this.props.dealerHit();
+        };
+        const dealerStay = () => {
+            this.props.dealerStay();
+        };
+        const gameOver = () => {
+            // this.props.gameOver();
+            console.log('game over');
+        };
+        if (this.props.playerTurn === 'DEALER'){
+            console.log('dealer turn, hitting');
+            dealerHit();
+        }
         return (
             <div className="game-container">
                 <Dealer cards={this.props.dealer.hand.cards} soft={this.props.dealer.hand.softValue} hard={this.props.dealer.hand.hardValue}/>

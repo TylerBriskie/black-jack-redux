@@ -32,6 +32,19 @@ export const newGameAction = (players, deckCount) => {
     }
 };
 
+export const dealerHit = () => {
+  return (dispatch, getState) => {
+      const state = getState();
+      const dealer = state.game.dealer;
+      const hand = dealer.hand;
+
+  }
+};
+
+export const dealerStay = () => {
+
+};
+
 export const hitAction = (playerId, currentHand) => {
     return (dispatch, getState) => {
         const state = getState();
