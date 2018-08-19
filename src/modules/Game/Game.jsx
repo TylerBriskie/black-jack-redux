@@ -3,9 +3,8 @@ import PlayersContainer from '../Players/PlayersContainer';
 import MainMenuContainer from '../MainMenu/MainMenuContainer';
 import PauseButton from '../PauseButton/PauseButton';
 import PauseMenu from '../PauseMenu/PauseMenu';
-
+import Dealer from '../Dealer/Dealer';
 import './Game.css'
-// import Dealer from '../Dealer/Dealer';
 
 class Game extends Component {
     constructor(props){
@@ -19,6 +18,7 @@ class Game extends Component {
         console.log(this.props.playerTurn);
         return (
             <div className="game-container">
+                <Dealer cards={this.props.dealer.hand.cards} soft={this.props.dealer.hand.softValue} hard={this.props.dealer.hand.hardValue}/>
                 <PlayersContainer playerTurn ={this.props.playerTurn} />
                 {
                     this.props.gameInProgress ?

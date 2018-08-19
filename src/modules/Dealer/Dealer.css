@@ -1,8 +1,8 @@
-.player-object {
-    height: 35vh;
+.dealer-object {
+    height: 20vh;
     width: 20vw;
     color: cyan;
-    border-radius: 10%;
+    border-radius: 30px;
     background-color:purple;
     border: 3px cyan solid;
     margin: 0 2em;
@@ -11,8 +11,8 @@
     justify-content: flex-start;
     transition: 1s linear all;
 }
-.active-player {
-    height: 42vh;
+.active-dealer {
+    height: 48vh;
     width: 22vw;
     border: 9px white solid;
     transition: 1s linear all;
@@ -23,32 +23,35 @@
     flex-direction: row;
     justify-content: space-around;
 }
-.hand-cards {
+.dealer-cards {
     display: table;
     table-layout: fixed;
     width: 50%;
     max-width: 100%;
 }
+
+.dealer-cards img {
+    height: 50%;
+}
+
 .card-container {
     display: table-cell;
     width: 50%;
 }
 
-img {
-    height: 80%;
-}
 
 
- .player-header {
+
+.dealer-header {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
 }
 
-.player-buttons {
+.dealer-buttons {
     justify-self: flex-end;
 }
-.player-buttons > div {
+.dealer-buttons > div {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -74,7 +77,7 @@ img {
     background-color: white;
 }
 
-.player-single-hand {
+.dealer-single-hand {
     display: flex;
     flex-direction: column;
 }
@@ -107,3 +110,4 @@ img {
     }
 
 }
+

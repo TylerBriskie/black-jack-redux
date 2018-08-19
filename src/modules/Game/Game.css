@@ -11,5 +11,6 @@
     width: 100vw;
     border: cyan 5px solid;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: space-around;
+    align-items: center;
 }
