@@ -5,19 +5,27 @@ font-family: 'Mr Dafoe', cursive;
 font-family: 'Monoton', cursive;
 font-family: 'Raleway', sans-serif;
 */
+
+
 body {
   background-color: #000;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+}
 
 .App {
-  text-align: center; }
+  text-align: center;
+}
 
 .App-intro {
-  font-size: large; }
+  font-size: large;
+}
 
 .players-container {
   display: flex;
-  flex-direction: row; }
+  flex-direction: row;
+
+
+}
