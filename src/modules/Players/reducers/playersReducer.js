@@ -28,17 +28,18 @@ export default (state = initialState, { type, ...payload}) =>{
     }
 
     if (type === DEAL_CARD){
-        if (payload.playerId === 'dealer'){
+        if (payload.playerId === 'DEALER'){
             return state;
         }
         const {players} = state;
-        const player = players.find(player => player.id === payload.playerId);
-        if (player.hands.length === 0){
-            player.hands[0]={
+        const currentPlayer = players.find(player => player.id === payload.playerId);
+        const playerIndex = players.indexOf(currentPlayer);
+        if (currentPlayer.hands.length === 0){
+            currentPlayer.hands[0]={
                 cards: [payload.card],
             };
         } else {
-            const hand = player.hands[payload.currentHand];
+            const hand = currentPlayer.hands[payload.currentHand];
             hand.cards.push(payload.card);
             const values = getValues(hand);
             hand.softValue = values.soft;
@@ -49,8 +50,15 @@ export default (state = initialState, { type, ...payload}) =>{
                 hand.isSplittable = true;
             }
         }
+        const newPlayers = players.map((player, index) => {
+            if (index !== playerIndex){
+                return player;
+            }
+            return currentPlayer;
+        });
         return {
             ...state,
+            players,
         }
     }
 

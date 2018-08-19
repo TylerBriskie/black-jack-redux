@@ -1,10 +1,12 @@
-import {DEAL_CARD, NEW_GAME, PAUSE_GAME} from "../actions/gameActions";
+import {DEAL_CARD, GAME_OVER, NEW_GAME, PAUSE_GAME, PAYOUT_WINNERS} from "../actions/gameActions";
 import {BUST, STAY} from '../../Players/actions/playersActions';
 import {getValues} from "../helpers/gameLogic";
 
 const initialState = {
-    gameInProgress: false,
     gamePaused: false,
+    gameInProgress: false,
+    payingOutWinners: false,
+    gameOver: false,
     playerTurn: 0,
     dealer: {
         hand: {
@@ -42,6 +44,9 @@ export default (state = initialState, { type, ...payload}) =>{
         hand.isBusted = values.busted;
         return {
             ...state,
+            dealer: {
+                hand,
+            }
         }
     }
 
@@ -64,6 +69,21 @@ export default (state = initialState, { type, ...payload}) =>{
         return {
             ...state,
             playerTurn: payload.nextPlayerId,
+        }
+    }
+
+    if (type === PAYOUT_WINNERS){
+        console.log('winner winner chicken dinner');
+        return {
+            ...state,
+            payingOutWinners: true,
+        }
+    }
+    if (type === GAME_OVER){
+        console.log('game over man');
+        return {
+            ...state,
+            gameOver: true,
         }
     }
     return state;

@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import Game from './Game';
 import { getPlayers, getDealer, getDeck } from './selectors/gameSelectors';
-import { pauseGameAction, dealerHit, dealerStay } from './actions/gameActions';
+import { pauseGameAction, dealerHitAction, dealerStayAction } from './actions/gameActions';
 
 export const mapStateToProps = state => {
     return {
@@ -16,8 +16,8 @@ export const mapStateToProps = state => {
 
 export const mapDispatchToProps = dispatch => ({
     pauseGame: () => dispatch(pauseGameAction()),
-    dealerHit: () => dispatch(dealerHit()),
-    dealerStay: () => dispatch(dealerStay()),
+    dealerHit: () => dispatch(dealerHitAction()),
+    dealerStay: () => dispatch(dealerStayAction()),
 
 });
 

@@ -6,6 +6,8 @@ export const FETCH_DECK = 'FETCH_DECK';
 export const DEAL_CARD= 'DEAL_CARD';
 export const PAUSE_GAME = 'PAUSE_GAME';
 export const BUST = 'BUST';
+export const PAYOUT_WINNERS = 'PAYOUT_WINNERS';
+export const GAME_OVER = 'GAME_OVER';
 
 export const newGameAction = (players, deckCount) => {
     return (dispatch, getState) => {
@@ -22,7 +24,7 @@ export const newGameAction = (players, deckCount) => {
                         const numberOfPlayers = players.length + 1;
                         for (var i = 0; i<numberOfPlayers*2; i++){
                             const playerId = i === numberOfPlayers-1 || i=== numberOfPlayers*2-1
-                                ? 'dealer' : i>=numberOfPlayers ? players[i%numberOfPlayers].id : players[i].id;
+                                ? 'DEALER' : i>=numberOfPlayers ? players[i%numberOfPlayers].id : players[i].id;
                             const card = cards.pop();
                             dispatch({ type: DEAL_CARD, card, playerId, currentHand: 0, })
                         }
@@ -32,17 +34,41 @@ export const newGameAction = (players, deckCount) => {
     }
 };
 
-export const dealerHit = () => {
+export const dealerHitAction = () => {
   return (dispatch, getState) => {
       const state = getState();
       const dealer = state.game.dealer;
-      const hand = dealer.hand;
+      const deck = state.game.deck.cards;
+      const card = deck.pop();
+
+      const hand = {cards: []};
+      for (var i = 0; i<dealer.hand.cards.length; i++){
+          hand.cards.push(dealer.hand.cards[i])
+      }
+
+      const {busted} = getValues(hand);
+      if (busted){
+          dispatch({
+              type: PAYOUT_WINNERS,
+          })
+      }
+      dispatch({
+          type: DEAL_CARD,
+          playerId: 'DEALER',
+          card,
+          currentHand: 0,
+          deck,
+      })
 
   }
 };
 
-export const dealerStay = () => {
-
+export const dealerStayAction = () => {
+    return (dispatch, getState) => {
+        dispatch({
+            type: PAYOUT_WINNERS,
+        })
+    }
 };
 
 export const hitAction = (playerId, currentHand) => {

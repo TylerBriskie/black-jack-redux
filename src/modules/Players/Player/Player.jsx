@@ -10,6 +10,10 @@ class Player extends React.Component {
         }
     }
 
+    componentDidMount(){
+        console.log('rendering player');
+    }
+
     render (){
 
         const increaseBet = () => this.props.increaseBet(this.props.id);

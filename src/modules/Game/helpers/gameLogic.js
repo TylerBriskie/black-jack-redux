@@ -20,6 +20,7 @@ export const getValues = hand => {
         soft: 0,
         hard: 0,
         busted: false,
+        isBlackjack: false,
     };
     let aceCount = 0;
     for (let i = 0; i< hand.cards.length; i++){
@@ -38,6 +39,9 @@ export const getValues = hand => {
             value.soft += 11;
             value.hard += 1;
         }
+    }
+    if (aceCount === 1 && value.hard === 21){
+        value.isBlackjack = true;
     }
     if (value.hard > 21){
         value.busted = true;
