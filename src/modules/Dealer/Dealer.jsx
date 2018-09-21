@@ -6,11 +6,13 @@ class Dealer extends React.Component {
     }
 
     componentDidUpdate(){
-        if (this.props.dealerTurn && this.props.hardValue < 17){
+        console.log(this.props);
+        if (this.props.busted){
+            this.props.dealerBusts();
+        } else if (this.props.dealerTurn && this.props.hardValue < 17){
             this.props.dealerHit();
-        } else if (this.props.dealerTurn) {
-            console.log('dealer STAYS');
-            this.props.dealerStay();
+        } else if (this.props.dealerTurn && !this.props.busted) {
+            this.props.dealerStay(this.props.hardValue);
         }
     }
 

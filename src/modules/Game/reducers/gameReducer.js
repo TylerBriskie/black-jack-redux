@@ -1,4 +1,4 @@
-import {DEAL_CARD, GAME_OVER, NEW_GAME, PAUSE_GAME, PAYOUT_WINNERS} from "../actions/gameActions";
+import {DEAL_CARD, GAME_OVER, NEW_GAME, PAUSE_GAME, CALCULATE_WINNERS, PAYOUT_WINNERS} from "../actions/gameActions";
 import {BUST, STAY} from '../../Players/actions/playersActions';
 import {getValues} from "../helpers/gameLogic";
 
@@ -39,9 +39,11 @@ export default (state = initialState, { type, ...payload}) =>{
         const hand = dealer.hand;
         hand.cards.push(payload.card);
         const values = getValues(hand);
-        hand.softvalue = values.soft;
+        console.log('values: ', values);
+        hand.softValue = values.soft;
         hand.hardValue = values.hard;
         hand.isBusted = values.busted;
+        console.log('dealer hand: ', hand);
         return {
             ...state,
             dealer: {
@@ -72,13 +74,45 @@ export default (state = initialState, { type, ...payload}) =>{
         }
     }
 
-    if (type === PAYOUT_WINNERS){
-        console.log('winner winner chicken dinner');
+    if (type === CALCULATE_WINNERS){
+        console.log("CALCULATING");
+        console.log(payload);
+        let payout = {};
+        let winningHands = [];
+        let pushHands = [];
+        payload.players.forEach(player => {
+            console.log(player);
+            player.hands.forEach(hand => {
+                console.log(hand);
+                if (payload.dealerScore === "BUST"){
+                    console.log('dealer busts');
+                    if (!hand.isBusted){
+                        winningHands.push(hand);
+                    }
+                } else {
+                    console.log('dealer stays, score: ', payload.dealerScore);
+                    if (!hand.isBusted && hand.softValue > payload.dealerScore ) {
+                        winningHands.push(hand);
+                    }
+                    if (!hand.isBusted && hand.softValue === payload.dealerScore) {
+                        pushHands.push(hand);
+                    }
+                }
+            });
+
+        });
+        console.log(winningHands);
         return {
             ...state,
             payingOutWinners: true,
         }
     }
+
+    if (type === PAYOUT_WINNERS){
+        console.log(payload);
+
+    }
+
     if (type === GAME_OVER){
         console.log('game over man');
         return {

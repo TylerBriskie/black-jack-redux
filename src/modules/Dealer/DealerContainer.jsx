@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { dealerHitAction, dealerStayAction,
+import { dealerHitAction, dealerStayAction, dealerBustAction, calculateWinnersAction
 } from "../Game/actions/gameActions";
 import Dealer from './Dealer'
 
@@ -16,7 +16,8 @@ export const mapStateToProps = state => {
 
 export const mapDispatchToProps = dispatch => ({
     dealerHit: () => dispatch(dealerHitAction()),
-    dealerStay: () => dispatch(dealerStayAction()),
+    dealerStay: score => dispatch(calculateWinnersAction(score)),
+    dealerBusts: () => dispatch(calculateWinnersAction("BUST")),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dealer);

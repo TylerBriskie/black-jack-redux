@@ -6,6 +6,7 @@ export const FETCH_DECK = 'FETCH_DECK';
 export const DEAL_CARD= 'DEAL_CARD';
 export const PAUSE_GAME = 'PAUSE_GAME';
 export const BUST = 'BUST';
+export const CALCULATE_WINNERS = "CALCULATE_WINNERS";
 export const PAYOUT_WINNERS = 'PAYOUT_WINNERS';
 export const GAME_OVER = 'GAME_OVER';
 
@@ -46,12 +47,6 @@ export const dealerHitAction = () => {
           hand.cards.push(dealer.hand.cards[i])
       }
 
-      const {busted} = getValues(hand);
-      if (busted){
-          dispatch({
-              type: PAYOUT_WINNERS,
-          })
-      }
       dispatch({
           type: DEAL_CARD,
           playerId: 'DEALER',
@@ -63,14 +58,30 @@ export const dealerHitAction = () => {
   }
 };
 
-export const dealerStayAction = () => {
-    return (dispatch, getState) => {
-        dispatch({
-            type: PAYOUT_WINNERS,
-        })
-    }
-};
+// export const dealerStayAction = score => {
+//     return (dispatch, getState) => {
+//         const state = getState();
+//         const players = state.players.players;
+//         dispatch({
+//             type: CALCULATE_WINNERS,
+//             dealerScore: score,
+//             players,
+//         })
+//     }
+// };
 
+// export const dealerBustAction = () => {
+//     calculateWinners("BUST");
+    // return (dispatch, getState) => {
+    //     const state = getState();
+    //     const players = state.players.players;
+    //     dispatch({
+    //         type: CALCULATE_WINNERS,
+    //         dealerScore: "BUST",
+    //         players,
+    //     })
+    // }
+// };
 export const hitAction = (playerId, currentHand) => {
     return (dispatch, getState) => {
         const state = getState();
@@ -135,7 +146,31 @@ export const stayAction = (playerId, currentHand) => {
     }
 };
 
+export const payWinnersAction = () => {
+  return (dispatch, getState) => {
+      const state = getState();
+      console.log(state);
+
+      dispatch({
+          type: PAYOUT_WINNERS
+      })
+  }
+};
+
 
 export const pauseGameAction = () => ({
    type: PAUSE_GAME,
 });
+
+export const calculateWinnersAction = (dealerScore) => {
+    console.log(dealerScore);
+    return (dispatch, getState) => {
+    const state = getState();
+    const players = state.players.players;
+    dispatch({
+        type: CALCULATE_WINNERS,
+        dealerScore,
+        players,
+    })
+}
+};

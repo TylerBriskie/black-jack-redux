@@ -1,0 +1,17 @@
+.payout-modal {
+  color: cyan;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: none;
+  border: cyan 5px solid;
+  -webkit-border-radius: 5%;
+  -moz-border-radius: 5%;
+  border-radius: 40px;
+  width: 40vw;
+  height: 30vh;
+  position: fixed;
+  left: 30vw;
+  bottom: 50vh;
+  margin: 0 auto;
+  font-family: 'Raleway', sans-serif; }

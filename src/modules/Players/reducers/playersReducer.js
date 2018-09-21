@@ -33,10 +33,12 @@ export default (state = initialState, { type, ...payload}) =>{
         }
         const {players} = state;
         const currentPlayer = players.find(player => player.id === payload.playerId);
+        console.log(currentPlayer);
         const playerIndex = players.indexOf(currentPlayer);
         if (currentPlayer.hands.length === 0){
             currentPlayer.hands[0]={
                 cards: [payload.card],
+                wager: currentPlayer.initialWager,
             };
         } else {
             const hand = currentPlayer.hands[payload.currentHand];
