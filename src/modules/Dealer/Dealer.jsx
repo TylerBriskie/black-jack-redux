@@ -9,10 +9,10 @@ class Dealer extends React.Component {
         console.log(this.props);
         if (this.props.busted){
             this.props.dealerBusts();
-        } else if (this.props.dealerTurn && this.props.hardValue < 17){
+        } else if (this.props.dealerTurn && this.props.score < 17){
             this.props.dealerHit();
         } else if (this.props.dealerTurn && !this.props.busted) {
-            this.props.dealerStay(this.props.hardValue);
+            this.props.dealerStay(this.props.score);
         }
     }
 
@@ -28,7 +28,7 @@ class Dealer extends React.Component {
                     <h2>Dealer</h2>
                 </div>
                 <div className="dealer-hand">
-                    {this.props.hardValue}
+                    {this.props.score}
                     <div className="dealer-cards">
                         {dealerCards}
                     </div>

@@ -11,6 +11,7 @@ const initialState = {
     dealer: {
         hand: {
             cards: [],
+            score: 0,
             softValue: 0,
             hardValue: 0,
             isBusted: false,
@@ -40,9 +41,11 @@ export default (state = initialState, { type, ...payload}) =>{
         hand.cards.push(payload.card);
         const values = getValues(hand);
         console.log('values: ', values);
+        hand.score = values.score;
         hand.softValue = values.soft;
         hand.hardValue = values.hard;
         hand.isBusted = values.busted;
+        hand.isBlackjack = values.isBlackjack;
         console.log('dealer hand: ', hand);
         return {
             ...state,
@@ -91,7 +94,7 @@ export default (state = initialState, { type, ...payload}) =>{
                     }
                 } else {
                     console.log('dealer stays, score: ', payload.dealerScore);
-                    if (!hand.isBusted && hand.softValue > payload.dealerScore ) {
+                    if (!hand.isBusted && hand.hardValue > payload.dealerScore ) {
                         winningHands.push(hand);
                     }
                     if (!hand.isBusted && hand.softValue === payload.dealerScore) {
@@ -101,7 +104,9 @@ export default (state = initialState, { type, ...payload}) =>{
             });
 
         });
-        console.log(winningHands);
+        console.log("win:", winningHands);
+        console.log("push:", pushHands);
+
         return {
             ...state,
             payingOutWinners: true,
@@ -110,7 +115,10 @@ export default (state = initialState, { type, ...payload}) =>{
 
     if (type === PAYOUT_WINNERS){
         console.log(payload);
-
+        return {
+            ...state,
+            payingOutWinners: true,
+        }
     }
 
     if (type === GAME_OVER){

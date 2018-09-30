@@ -163,14 +163,34 @@ export const pauseGameAction = () => ({
 });
 
 export const calculateWinnersAction = (dealerScore) => {
-    console.log(dealerScore);
     return (dispatch, getState) => {
     const state = getState();
     const players = state.players.players;
-    dispatch({
-        type: CALCULATE_WINNERS,
-        dealerScore,
-        players,
-    })
+    players.forEach(player => {
+        player.hands.forEach(hand => {
+            hand.handWins = false;
+            hand.handPushes = false;
+            if (dealerScore === "BUST"){
+                if (!hand.isBusted){
+                    hand.handWins = true;
+                }
+            } else {
+                if (!hand.isBusted && hand.hardValue > dealerScore ) {
+                    hand.handWins = true;
+                }
+                if (!hand.isBusted && hand.softValue === dealerScore) {
+                    hand.handPushes = true;
+                }
+            }
+        });
+
+        dispatch({
+            type: PAYOUT_WINNERS,
+            playerId: player.id,
+            playerName: player.name,
+            hands: player.hands,
+        })
+    });
+
 }
 };

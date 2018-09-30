@@ -17,6 +17,7 @@ const cardValues = {
 
 export const getValues = hand => {
     let value = {
+        score: 0,
         soft: 0,
         hard: 0,
         busted: false,
@@ -29,19 +30,30 @@ export const getValues = hand => {
         } else {
             value.hard += cardValues[hand.cards[i].value];
             value.soft += cardValues[hand.cards[i].value];
+            value.score += cardValues[hand.cards[i].value];
         }
     }
     for (let j = 0; j < aceCount; j++){
-        if (value.hard < 11){
-            value.hard += 1;
+        // if (value.hard < 11){
+        //     value.hard += 1;
+        //     value.soft += 11;
+        // } else {
+        //     value.soft += 11;
+        //     value.hard += 1;
+        // }
+        if (value.score + 11 <= 21){
             value.soft += 11;
+            value.hard += 1;
+            value.score += 11;
         } else {
             value.soft += 11;
             value.hard += 1;
+            value.score += 1
         }
     }
-    if (aceCount === 1 && value.hard === 21){
+    if (aceCount === 1 && value.soft === 21 && hand.cards.length === 2){
         value.isBlackjack = true;
+        value.score = "BlackJack"
     }
     if (value.hard > 21){
         value.busted = true;

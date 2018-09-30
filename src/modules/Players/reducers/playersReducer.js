@@ -1,5 +1,5 @@
 import { NEW_PLAYER, INCREASE_BET, DECREASE_BET, HIT, BUST} from "../actions/playersActions";
-import { DEAL_CARD } from '../../Game/actions/gameActions';
+import { DEAL_CARD, PAYOUT_WINNERS } from '../../Game/actions/gameActions';
 import { getValues } from "../../Game/helpers/gameLogic";
 
 const initialState = {
@@ -44,20 +44,22 @@ export default (state = initialState, { type, ...payload}) =>{
             const hand = currentPlayer.hands[payload.currentHand];
             hand.cards.push(payload.card);
             const values = getValues(hand);
+            hand.score = values.score;
             hand.softValue = values.soft;
             hand.hardValue = values.hard;
             hand.isBusted = values.busted;
+            hand.isBlackjack = values.isBlackjack;
             console.log(hand);
             if (hand.cards.length === 2 && hand.cards[0].value === hand.cards[1].value){
                 hand.isSplittable = true;
             }
         }
-        const newPlayers = players.map((player, index) => {
-            if (index !== playerIndex){
-                return player;
-            }
-            return currentPlayer;
-        });
+        // const newPlayers = players.map((player, index) => {
+        //     if (index !== playerIndex){
+        //         return player;
+        //     }
+        //     return currentPlayer;
+        // });
         return {
             ...state,
             players,
@@ -69,8 +71,9 @@ export default (state = initialState, { type, ...payload}) =>{
         const player = players.find(player => player.id === payload.playerId);
         const hand = player.hands[payload.currentHand];
         hand.cards.push(payload.card);
-        hand.softValue = 'BUST';
-        hand.hardValue = 'BUST';
+        hand.score = 'BUST';
+        // hand.softValue = 'BUST';
+        // hand.hardValue = 'BUST';
         hand.isBusted = 'BUST';
         return {
             ...state,
@@ -99,6 +102,24 @@ export default (state = initialState, { type, ...payload}) =>{
                 if (player.id === payload.id && player.initialWager > 0){
                     player.bankRoll = player.bankRoll + 25;
                     player.initialWager = player.initialWager - 25;
+                }
+                return player;
+            })
+        }
+    }
+
+    if (type === PAYOUT_WINNERS){
+        const { players } = state;
+        return {
+            ...state,
+            players: players.map(player => {
+                if (player.id === payload.playerId){
+                    if(payload.hands[0].handWins){
+                        player.bankRoll += payload.hands[0].wager;
+                    } else if (!payload.hands[0].handPushes && !payload.hands[0].handWins){
+                        console.log("LOSE")
+                        player.bankRoll -= payload.hands[0].wager;
+                    }
                 }
                 return player;
             })

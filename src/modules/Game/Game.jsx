@@ -19,9 +19,9 @@ class Game extends Component {
 
         return (
             <div className="game-container">
-                <DealerContainer cards={this.props.dealer.hand.cards} soft={this.props.dealer.hand.softValue} hard={this.props.dealer.hand.hardValue}/>
+                <DealerContainer id="dealer-container" cards={this.props.dealer.hand.cards} soft={this.props.dealer.hand.softValue} hard={this.props.dealer.hand.hardValue}/>
                 {this.props.payingOutWinners ? (
-                    <PayoutModal dealer={this.props.dealer} />
+                    <PayoutModal dealer={this.props.dealer} players={this.props.players} playAgain={this.props.newGameAction}/>
                 ) : null}
                 <PlayersContainer playerTurn ={this.props.playerTurn} />
                 {

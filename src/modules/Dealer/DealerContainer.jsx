@@ -10,6 +10,7 @@ export const mapStateToProps = state => {
         hasBlackjack: state.game.dealer.hasBlackjack,
         softValue: state.game.dealer.hand.softValue,
         hardValue: state.game.dealer.hand.hardValue,
+        score: state.game.dealer.hand.score,
         busted: state.game.dealer.hand.isBusted,
     }
 };
