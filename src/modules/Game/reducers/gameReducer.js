@@ -1,10 +1,11 @@
-import {DEAL_CARD, GAME_OVER, NEW_GAME, PAUSE_GAME, CALCULATE_WINNERS, PAYOUT_WINNERS} from "../actions/gameActions";
+import {DEAL_CARD, GAME_OVER, NEW_GAME, PAUSE_GAME, CALCULATE_WINNERS, PAYOUT_WINNERS, NEW_HAND} from "../actions/gameActions";
 import {BUST, STAY} from '../../Players/actions/playersActions';
 import {getValues} from "../helpers/gameLogic";
 
 const initialState = {
     gamePaused: false,
     gameInProgress: false,
+    placeYourBets: true,
     payingOutWinners: false,
     gameOver: false,
     playerTurn: 0,
@@ -22,6 +23,27 @@ const initialState = {
 };
 
 export default (state = initialState, { type, ...payload}) =>{
+    if (type === NEW_HAND) {
+        console.log('new hand!');
+        return {
+            ...state,
+            payingOutWinners: false,
+            placeYourBets: true,
+            playerTurn: 0,
+            dealer: {
+                hand: {
+                    cards: [],
+                    score: 0,
+                    softValue: 0,
+                    hardValue: 0,
+                    isBusted: false,
+                },
+                hasBlackjack: false,
+            },
+
+        }
+    }
+
     if (type === NEW_GAME){
         console.log('got deck', payload);
         const { cards, activePlayer } = payload;
@@ -29,6 +51,7 @@ export default (state = initialState, { type, ...payload}) =>{
             ...state,
             deck: { cards: cards},
             gameInProgress: true,
+            placeYourBets: false,
             playerTurn: activePlayer,
         }
     }

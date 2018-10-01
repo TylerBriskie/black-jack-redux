@@ -70,7 +70,7 @@ class Player extends React.Component {
                     {buildHands()}
                 </div>
                 <div className="player-buttons">
-                    {this.props.gameInProgress ?
+                    {!this.props.placeYourBets ?
                         <div className="action-button-container">
                             <button className="action-button" onClick={hit}>Hit</button>
                             <button className="action-button" onClick={stay}>Stay</button>

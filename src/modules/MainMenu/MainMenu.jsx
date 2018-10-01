@@ -48,7 +48,7 @@ class MainMenu extends Component {
                     <h1>Table Full!</h1>
                 }
                 <button className="btn new-game-button" onClick={this.startGame}>
-                    {this.props.gameInProgress ? "RESUME" : "START GAME"}
+                    START GAME
                 </button>
             </div>
         )

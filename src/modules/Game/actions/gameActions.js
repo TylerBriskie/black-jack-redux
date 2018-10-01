@@ -8,6 +8,7 @@ export const PAUSE_GAME = 'PAUSE_GAME';
 export const BUST = 'BUST';
 export const CALCULATE_WINNERS = "CALCULATE_WINNERS";
 export const PAYOUT_WINNERS = 'PAYOUT_WINNERS';
+export const NEW_HAND = 'NEW_HAND';
 export const GAME_OVER = 'GAME_OVER';
 
 export const newGameAction = (players, deckCount) => {
@@ -160,6 +161,10 @@ export const payWinnersAction = () => {
 
 export const pauseGameAction = () => ({
    type: PAUSE_GAME,
+});
+
+export const newHandAction = () => ({
+    type: NEW_HAND,
 });
 
 export const calculateWinnersAction = (dealerScore) => {

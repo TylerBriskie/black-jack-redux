@@ -1,5 +1,5 @@
 import { NEW_PLAYER, INCREASE_BET, DECREASE_BET, HIT, BUST} from "../actions/playersActions";
-import { DEAL_CARD, PAYOUT_WINNERS } from '../../Game/actions/gameActions';
+import { NEW_HAND, DEAL_CARD, PAYOUT_WINNERS } from '../../Game/actions/gameActions';
 import { getValues } from "../../Game/helpers/gameLogic";
 
 const initialState = {
@@ -16,6 +16,10 @@ export default (state = initialState, { type, ...payload}) =>{
         let newPlayer = {
             id: Date.now(),
             name: payload.name,
+            handsPlayed: 0,
+            wins: 0,
+            losses: 0,
+            pushes: 0,
             bankRoll: 450,
             hands: [],
             initialWager: 50,
@@ -114,14 +118,30 @@ export default (state = initialState, { type, ...payload}) =>{
             ...state,
             players: players.map(player => {
                 if (player.id === payload.playerId){
+                    player.handsPlayed += 1;
                     if(payload.hands[0].handWins){
                         player.bankRoll += payload.hands[0].wager;
+                        player.wins += 1;
                     } else if (!payload.hands[0].handPushes && !payload.hands[0].handWins){
                         console.log("LOSE")
                         player.bankRoll -= payload.hands[0].wager;
+                        player.losses += 1;
+                    } else {
+                        player.pushes += 1;
                     }
                 }
                 return player;
+            })
+        }
+    }
+
+    if (type ===NEW_HAND){
+        const {players} = state;
+        return {
+            ...state,
+            players: players.map(player => {
+                player.hands=[];
+                return player
             })
         }
     }
