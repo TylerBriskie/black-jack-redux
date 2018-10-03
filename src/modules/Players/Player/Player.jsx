@@ -11,7 +11,7 @@ class Player extends React.Component {
     }
 
     componentDidMount(){
-        console.log('rendering player');
+        console.log('rendering player', this.props);
     }
 
     render (){
@@ -31,7 +31,7 @@ class Player extends React.Component {
         const buildHands = () => {
             const handCount = this.props.hands.length;
             if (handCount === 0){
-                return 'no hands'
+                return
             }
 
             return this.props.hands.map((hand) => {
@@ -47,7 +47,9 @@ class Player extends React.Component {
                 <div className="player-single-hand">
                         {isBusted ?
                             (
-                                <div className="hand=values"> <h1>BUST</h1></div>
+                                <div className="hand-values">
+                                    <h1>BUST</h1>
+                                </div>
                             ) :
                                 <div className="hand-values">
                                     <h1>{score}</h1>
@@ -63,7 +65,7 @@ class Player extends React.Component {
         return (
             <div className={this.props.playerActive ? "player-object active-player": "player-object"}>
                 <div className="player-header">
-                    <h3>{this.props.name}</h3>
+                    <h1 className="player-name">{this.props.name}</h1>
                     <h3>${this.props.bankRoll}</h3>
                 </div>
                 <div className="player-hands">
@@ -71,17 +73,23 @@ class Player extends React.Component {
                 </div>
                 <div className="player-buttons">
                     {!this.props.placeYourBets ?
-                        <div className="action-button-container">
-                            <button className="action-button" onClick={hit}>Hit</button>
-                            <button className="action-button" onClick={stay}>Stay</button>
-                            <button className="action-button" onClick={stay}>Split</button>
-                            <button className="action-button" id="double-down-button" onClick={doubleDown}>Double Down</button>
-                        </div>
+                        this.props.playerTurn === this.props.id ?
+                            <div className="action-button-container">
+                                <button className="action-button" onClick={hit}>Hit</button>
+                                <button className="action-button" onClick={stay}>Stay</button>
+                                <button className="action-button" onClick={stay}>Split</button>
+                                <button className="action-button" id="double-down-button" onClick={doubleDown}>Double Down</button>
+                            </div>
+                            :
+                            null
                         :
-                        <div>
-                            <button className="wager-button" onClick={decreaseBet}>-</button>
-                            <h4>${this.props.initialWager}</h4>
-                            <button className="wager-button" onClick={increaseBet}>+</button>
+                        <div className="wager-button-container">
+                            <h3>Place Your Bets</h3>
+                            <div>
+                                <button className="wager-button" onClick={decreaseBet}>-</button>
+                                <h4>${this.props.initialWager}</h4>
+                                <button className="wager-button" onClick={increaseBet}>+</button>
+                            </div>
                         </div>
                     }
 

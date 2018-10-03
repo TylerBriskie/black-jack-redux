@@ -28,7 +28,7 @@
   width: 50%;
   max-width: 100%; }
   .dealer-cards img {
-    height: 12em; }
+    height: 15vh; }
 
 .card-container {
   display: table-cell;
@@ -39,39 +39,16 @@
   flex-direction: row;
   justify-content: space-around; }
 
-.dealer-buttons {
-  justify-self: flex-end; }
-
-.dealer-buttons > div {
+.dealer-hand {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  flex-wrap: wrap; }
-
-.action-button {
-  width: 40%;
-  height: 60px;
-  font-family: 'Raleway', sans-serif;
-  font-size: 150%;
-  background-color: white;
-  border-radius: 15%; }
-
-#double-down-button {
-  font-size: 125%; }
-
-.wager-button {
-  width: 65px;
-  height: 65px;
-  border-radius: 50%;
-  background-color: white; }
+  justify-content: center; }
 
 .dealer-single-hand {
   display: flex;
   flex-direction: column; }
 
 @media only screen and (max-width: 1630px) {
-  body {
-    background-color: lightblue; }
   .card-container {
     display: table-cell;
     width: 40%; }
@@ -79,8 +56,6 @@
     height: 60%; } }
 
 @media only screen and (max-width: 1200px) {
-  body {
-    background-color: hotpink; }
   .card-container {
     display: table-cell;
     width: 40%;

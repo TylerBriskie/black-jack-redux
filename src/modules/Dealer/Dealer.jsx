@@ -20,7 +20,7 @@ class Dealer extends React.Component {
 
     render () {
         const dealerCards = this.props.cards.map(card => {
-            if (card === this.props.cards[0]){
+            if (card === this.props.cards[0] && !this.props.dealerTurn){
                 return (<div className="card-container"><img className="card-back" src={cardBack} /></div>)
             }
             return (<div className="card-container"><img className={`single-card`} src={card.image} /></div>)
@@ -30,9 +30,10 @@ class Dealer extends React.Component {
             <div className="dealer-object">
                 <div className="dealer-header">
                     <h2>Dealer</h2>
+                    {this.props.dealerTurn ? this.props.score : null}
                 </div>
                 <div className="dealer-hand">
-                    {this.props.dealerTurn ? this.props.score : null}
+
                     <div className="dealer-cards">
                         {dealerCards}
                     </div>

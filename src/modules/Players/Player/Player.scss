@@ -1,20 +1,17 @@
-.dealer-object {
-    height: 20vh;
+.player-object {
+    height: 35vh;
     width: 20vw;
-    color: cyan;
-    border-radius: 30px;
-    background-color:purple;
-    border: 3px cyan solid;
+    color: lawngreen;
+    border-radius: 10%;
     margin: 0 2em;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     transition: 1s linear all;
 }
-.active-dealer {
-    height: 48vh;
+.active-player {
+    height: 42vh;
     width: 22vw;
-    border: 9px white solid;
     transition: 1s linear all;
 }
 
@@ -22,35 +19,75 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    h1 {
+        margin-top: 5vh;
+        margin-bottom: 0;
+        font-family: Monoton, sans-serif;
+        font-size: 300%;
+    }
 }
-.dealer-cards {
+.hand-cards {
     display: table;
     table-layout: fixed;
     width: 50%;
     max-width: 100%;
-    img {
-        height: 15vh;
-    }
 }
-
 .card-container {
     display: table-cell;
     width: 50%;
 }
 
-.dealer-header {
+img {
+    height: 80%;
+}
+
+
+ .player-header {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+     font-family: 'Bungee Inline', cursive;
+    h1 {
+        margin: 0;
+        margin-bottom: 2vh;
+    }
 }
 
-.dealer-hand {
+.player-buttons {
+    justify-self: flex-end;
+}
+.player-buttons > div {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 
-.dealer-single-hand {
+.action-button {
+    width: 40%;
+    height: 60px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 150%;
+    background-color: white;
+    border-radius: 15%;
+}
+#double-down-button {
+    font-size: 125%;
+}
+
+.wager-button-container {
+    display: flex;
+
+}
+
+.wager-button {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    background-color: white;
+}
+
+.player-single-hand {
     display: flex;
     flex-direction: column;
 }
@@ -77,4 +114,3 @@
     }
 
 }
-

@@ -19,19 +19,23 @@
 
 
 .btn {
+    bottom: 0;
+    height: 5vh;
     border-radius: 40px;
     font-family: 'Raleway', sans-serif;
 }
 
 .add-player-button {
     color: cyan;
+    height: 3vh;
     padding: 1%;
     background-color: mediumpurple;
-    width: 25%;
+    width: 140px;
 }
 
 .new-game-button {
-    width: 80%;
+    width: 18vw;
+    min-width: 140px;
     margin: 2% auto;
     padding: 1%;
     border: cyan solid 3px;

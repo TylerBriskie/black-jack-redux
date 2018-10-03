@@ -8,6 +8,7 @@ import Player from './Player'
 export const mapStateToProps = state => {
     return {
         placeYourBets: state.game.placeYourBets,
+        playerTurn: state.game.playerTurn,
     }
 };
 

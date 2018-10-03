@@ -16,7 +16,7 @@ const PayoutModal = (props) => {
                         <h2>{player.name} loses...</h2>
             )
         } else {
-            console.log('multiple hands found.  Payout logic not yet implemented.');
+            console.log('multicple hands found.  Payout logic not yet implemented.');
         }
 
     });

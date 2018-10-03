@@ -1,3 +1,8 @@
+.btn {
+    border-radius: 40px;
+    font-family: 'Raleway', sans-serif;
+}
+
 .pause-button {
     background-color: white;
     -webkit-border-radius: 5%;
@@ -9,12 +14,6 @@
     bottom: 0;
     left: 38vw;
     margin: 0 auto;
-    font-family: 'Raleway', sans-serif;
-}
-
-
-.btn {
-    border-radius: 40px;
     font-family: 'Raleway', sans-serif;
 }
 
