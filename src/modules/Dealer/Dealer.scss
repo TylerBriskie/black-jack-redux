@@ -29,7 +29,7 @@
     width: 50%;
     max-width: 100%;
     img {
-        height: 50%;
+        height: 12em;
     }
 }
 
@@ -50,6 +50,7 @@
 .dealer-buttons {
     justify-self: flex-end;
 }
+
 .dealer-buttons > div {
     display: flex;
     flex-direction: row;

@@ -1,5 +1,6 @@
 import React from 'react';
 import './Dealer.css';
+import cardBack from "../../assets/images/PlayingCardBack.png";
 class Dealer extends React.Component {
     constructor(props){
         super(props);
@@ -19,6 +20,9 @@ class Dealer extends React.Component {
 
     render () {
         const dealerCards = this.props.cards.map(card => {
+            if (card === this.props.cards[0]){
+                return (<div className="card-container"><img className="card-back" src={cardBack} /></div>)
+            }
             return (<div className="card-container"><img className={`single-card`} src={card.image} /></div>)
         });
 
@@ -28,7 +32,7 @@ class Dealer extends React.Component {
                     <h2>Dealer</h2>
                 </div>
                 <div className="dealer-hand">
-                    {this.props.score}
+                    {this.props.dealerTurn ? this.props.score : null}
                     <div className="dealer-cards">
                         {dealerCards}
                     </div>

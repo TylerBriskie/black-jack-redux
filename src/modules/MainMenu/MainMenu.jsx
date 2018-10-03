@@ -31,6 +31,10 @@ class MainMenu extends Component {
 
     startGame(e){
         e.preventDefault();
+        if (this.props.players.length === 0){
+            alert("Have a seat first...");
+            return;
+        }
         this.props.newGameAction(this.props.players, 6);
     }
 

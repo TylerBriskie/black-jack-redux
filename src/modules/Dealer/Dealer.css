@@ -28,7 +28,7 @@
   width: 50%;
   max-width: 100%; }
   .dealer-cards img {
-    height: 50%; }
+    height: 12em; }
 
 .card-container {
   display: table-cell;

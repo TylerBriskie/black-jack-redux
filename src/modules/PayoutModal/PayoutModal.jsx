@@ -24,7 +24,7 @@ const PayoutModal = (props) => {
         <div className="payout-modal">
             <h1>{headline}</h1>
             {winners}
-            <button className="btn resume-button" onClick={props.playAgain}>
+            <button className="btn new-hand-button" onClick={props.playAgain}>
                 Play Again
             </button>
         </div>
