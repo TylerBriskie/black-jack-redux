@@ -63,13 +63,11 @@ export default (state = initialState, { type, ...payload}) =>{
         const hand = dealer.hand;
         hand.cards.push(payload.card);
         const values = getValues(hand);
-        console.log('values: ', values);
         hand.score = values.score;
         hand.softValue = values.soft;
         hand.hardValue = values.hard;
         hand.isBusted = values.busted;
         hand.isBlackjack = values.isBlackjack;
-        console.log('dealer hand: ', hand);
         return {
             ...state,
             dealer: {

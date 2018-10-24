@@ -13,5 +13,9 @@
   justify-content: space-around;
   align-items: center; }
 
+#place-your-bets {
+  color: cyan;
+  font-family: 'Monoton', cursive; }
+
 #dealer-container {
   align-self: flex-start; }

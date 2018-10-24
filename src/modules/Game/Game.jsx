@@ -23,16 +23,19 @@ class Game extends Component {
                 {this.props.payingOutWinners ? (
                     <PayoutModal dealer={this.props.dealer} players={this.props.players} playAgain={this.props.newHand}/>
                 ) : null}
-                <PlayersContainer playerTurn ={this.props.playerTurn} />
+                {
+                    this.props.placeYourBets ? <h1 id="place-your-bets">Place Your Bets</h1>: null
+                }
+                <PlayersContainer playerTurn = {this.props.playerTurn} />
                 {
                     this.props.gameInProgress ?
                         this.props.placeYourBets ?
-                            <MainMenuContainer /> :
+                            <MainMenuContainer />
+                            :
                             this.props.gamePaused ?
                                 <PauseMenu resumeGame = {pauseGame} playerCount={this.props.playerCount} />
                                 :
                                 <PauseButton pauseGame = {pauseGame}/>
-
                         :
                     <MainMenuContainer />
                 }
