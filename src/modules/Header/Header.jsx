@@ -10,7 +10,8 @@ const propTypes = {
 function Header({title, subtitle}){
   return (
     <header className="header">
-      <h1 className="header-title">{title} <span className="header-span">{subtitle}</span></h1>
+      <h1 className="header-title">{title}</h1>
+        <h1 className="header-title"><span className="header-span">{subtitle}</span></h1>
     </header>
   )
 }

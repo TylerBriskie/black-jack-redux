@@ -4,24 +4,17 @@
 }
 
 .pause-button {
-    background-color: white;
     -webkit-border-radius: 5%;
     -moz-border-radius: 5%;
-    border-radius: 40px;
-    width: 40vw;
-    height: 75px;
+    height: 85px;
     position: fixed;
-    bottom: 0;
-    left: 38vw;
-    margin: 0 auto;
+    top: 20px;
+    right: 38px;
     font-family: 'Raleway', sans-serif;
-}
-
-.pause-button {
-    width: 25%;
-    font-size: 30px;
-    margin: 2% auto;
+    width: 85px;
+    font-size: 20px;
     border: 3px cyan solid;
-    background-color: purple;
+    border-radius: 50%;
+    background: none;
     color: cyan;
 }

@@ -11,14 +11,17 @@
   width: 36vw;
   height: 20vh;
   position: fixed;
-  left: 1vw;
+  left: 63vw;
   top: 18vh;
   margin: 0 auto;
   font-family: 'Raleway', sans-serif; }
+  .payout-modal h2 {
+    color: blue; }
 
 .new-hand-button {
   width: 80%;
   height: 5vh;
+  min-height: 40px;
   padding: 1%;
   border: cyan solid 3px;
   background-color: mediumpurple;

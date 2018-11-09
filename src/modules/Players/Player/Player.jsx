@@ -24,8 +24,6 @@ class Player extends React.Component {
 
         const stay = () => this.props.stay(this.props.id, 0);
 
-        // const bust = () => this.props.bust(this.props.id, 0);
-
         const doubleDown = () => this.props.doubleDown(this.props.id);
 
         const buildHands = () => {
@@ -63,6 +61,7 @@ class Player extends React.Component {
         };
 
         return (
+            <div>
             <div className={this.props.playerActive ? "player-object active-player": "player-object"}>
                 <div className="player-header">
                     <h1 className="player-name">{this.props.name}</h1>
@@ -71,30 +70,31 @@ class Player extends React.Component {
                 <div className="player-hands">
                     {buildHands()}
                 </div>
-                <div className="player-buttons">
-                    {!this.props.placeYourBets ?
-                        this.props.playerTurn === this.props.id ?
-                            <div className="action-button-container">
-                                <button className="action-button" onClick={hit}>Hit</button>
-                                <button className="action-button" onClick={stay}>Stay</button>
-                                <button className="action-button" onClick={stay}>Split</button>
-                                <button className="action-button" id="double-down-button" onClick={doubleDown}>Double Down</button>
-                            </div>
-                            :
-                            null
-                        :
-                        <div className="wager-button-container">
-                            <h3>Place Your Bets</h3>
-                            <div>
-                                <button className="wager-button" onClick={decreaseBet}>-</button>
-                                <h4>${this.props.initialWager}</h4>
-                                <button className="wager-button" onClick={increaseBet}>+</button>
-                            </div>
-                        </div>
-                    }
 
-                </div>
+                {!this.props.placeYourBets ?
+                        null
+                    :
+                    <div className="wager-button-container">
+                        <button className="wager-button" onClick={decreaseBet}>-</button>
+                        <div>
+                            <h4>${this.props.initialWager}</h4>
+                        </div>
+                        <button className="wager-button" onClick={increaseBet}>+</button>
+                    </div>
+                }
+
             </div>
+            {this.props.playerTurn === this.props.id ?
+            <div className="action-button-container">
+                <button className="action-button" onClick={hit}>Hit</button>
+                <button className="action-button" onClick={stay}>Stay</button>
+                <button className="action-button" onClick={stay}>Split</button>
+                <button className="action-button" id="double-down-button" onClick={doubleDown}>Double Down</button>
+            </div>
+            :
+            null
+            }
+        </div>
         )
     }
 

@@ -3,7 +3,7 @@
     width: 20vw;
     color: cyan;
     border-radius: 30px;
-    background-color:purple;
+    background: none;
     border: 3px cyan solid;
     margin: 0 2em;
     display: flex;
@@ -54,27 +54,3 @@
     display: flex;
     flex-direction: column;
 }
-@media only screen and (max-width: 1630px) {
-    .card-container {
-        display: table-cell;
-        width: 40%;
-    }
-
-    img {
-        height: 60%;
-    }
-
-}
-@media only screen and (max-width: 1200px) {
-    .card-container {
-        display: table-cell;
-        width: 40%;
-        height: 80%;
-    }
-
-    img {
-        height: 50%;
-    }
-
-}
-

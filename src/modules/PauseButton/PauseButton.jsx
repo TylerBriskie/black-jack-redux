@@ -5,7 +5,7 @@ const PauseButton = (props) => {
         return (
             <div>
                 <button className="btn pause-button" onClick={props.pauseGame}>
-                    PAUSE GAME
+                    PAUSE
                 </button>
             </div>
         )

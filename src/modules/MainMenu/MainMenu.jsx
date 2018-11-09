@@ -45,7 +45,7 @@ class MainMenu extends Component {
                 {this.props.players.length < 4 ?
                     <form onSubmit={this.addNewPlayer}>
 
-                        <input type="text" value={this.state.playerName} onChange={this.handleChange}
+                        <input autocomplete="off" id="player-name-input-box" type="text" value={this.state.playerName} onChange={this.handleChange}
                                placeholder="Enter Player Name"/>
                         <input className="btn add-player-button" type="submit" value="Add New Player"></input>
                     </form> :

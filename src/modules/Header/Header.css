@@ -1,11 +1,7 @@
 .header {
-  font-size: 300%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  height: 95px;
+  font-size: 200%;
   color: purple;
+  margin-left: 5vw;
 }
 
 .header-title {
@@ -16,4 +12,12 @@
 .header-span {
   color: cyan;
   font-family: 'Monoton', cursive;
+}
+
+
+@media only screen and (max-height: 450px) {
+  .header {
+    font-size: 125%;
+  }
+
 }

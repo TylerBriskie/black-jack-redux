@@ -1,0 +1,48 @@
+.main-menu {
+    color: cyan;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: black;
+    border: cyan 5px solid;
+    -webkit-border-radius: 5%;
+    -moz-border-radius: 5%;
+    border-radius: 40px;
+    min-width: 450px;
+    min-height: 200px;
+    position: fixed;
+    left: 30vw;
+    top: 100px;
+    margin: 0 auto;
+    font-family: 'Raleway', sans-serif;
+    #player-name-input-box, .add-player-button {
+        background-color: black;
+        color: cyan;
+        padding: 1em;
+        outline: none;
+        border: cyan solid 2px;
+        border-radius: 12px;
+        margin: 0 1em 1em 0;
+    }
+}
+
+h1 {
+    margin: 12px auto;
+}
+.btn {
+    border-radius: 15px;
+    font-family: 'Raleway', sans-serif;
+}
+
+.new-game-button {
+    position: relative;
+    bottom: 5px;
+    width: 18vw;
+    min-height: 5vh;
+    min-width: 140px;
+    margin: 2% auto;
+    padding: 1%;
+    border: cyan solid 3px;
+    background: none;
+    color: cyan;
+}

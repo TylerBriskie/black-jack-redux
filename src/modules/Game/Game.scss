@@ -7,12 +7,17 @@
 
 .game-container {
     display: flex;
-    height: 80vh;
+    height: 90vh;
     width: 100vw;
-    border: cyan 5px solid;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    .row {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        width: 100%;
+    }
 }
 
 #place-your-bets {

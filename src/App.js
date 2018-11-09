@@ -9,10 +9,6 @@ class App extends Component {
 
     return (
       <div className="App">
-        <Header
-          title="React - Jack"
-          subtitle="Redux"
-        />
         <GameContainer />
       </div>
     );

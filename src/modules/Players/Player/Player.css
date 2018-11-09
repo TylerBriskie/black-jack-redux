@@ -1,18 +1,32 @@
 .player-object {
+  font-family: 'Bungee Inline', cursive;
   height: 35vh;
+  min-height: 300px;
   width: 20vw;
-  color: lawngreen;
+  min-width: 250px;
+  border: solid 3px rgba(147, 112, 219, 0.4);
+  color: mediumpurple;
   border-radius: 10%;
-  margin: 0 2em;
+  margin: 0 20px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   transition: 1s linear all; }
+  .player-object .hand-cards {
+    margin-left: 20px;
+    display: table;
+    table-layout: fixed;
+    width: 50%;
+    max-width: 100%; }
+    .player-object .hand-cards img {
+      height: 16vh; }
 
 .active-player {
   height: 42vh;
   width: 22vw;
   transition: 1s linear all; }
+  .active-player .hand-cards img {
+    height: 20vh; }
 
 .hand-values {
   display: flex;
@@ -21,27 +35,16 @@
   .hand-values h1 {
     margin-top: 5vh;
     margin-bottom: 0;
-    font-family: Monoton, sans-serif;
     font-size: 300%; }
-
-.hand-cards {
-  display: table;
-  table-layout: fixed;
-  width: 50%;
-  max-width: 100%; }
 
 .card-container {
   display: table-cell;
   width: 50%; }
 
-img {
-  height: 80%; }
-
 .player-header {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  font-family: 'Bungee Inline', cursive; }
+  justify-content: space-around; }
   .player-header h1 {
     margin: 0;
     margin-bottom: 2vh; }
@@ -56,40 +59,31 @@ img {
   flex-wrap: wrap; }
 
 .action-button {
-  width: 40%;
+  color: greenyellow;
+  width: 60px;
   height: 60px;
-  font-family: 'Raleway', sans-serif;
-  font-size: 150%;
-  background-color: white;
-  border-radius: 15%; }
+  font-size: 140%;
+  background: none;
+  border-radius: 50%; }
 
 #double-down-button {
-  font-size: 125%; }
+  font-size: 100%; }
 
 .wager-button-container {
-  display: flex; }
-
-.wager-button {
-  width: 65px;
-  height: 65px;
-  border-radius: 50%;
-  background-color: white; }
+  display: flex;
+  flex-direction: row;
+  color: mediumpurple; }
+  .wager-button-container .wager-button {
+    color: mediumpurple;
+    font-size: 150%;
+    width: 65px;
+    height: 65px;
+    border: mediumpurple 3px solid;
+    border-radius: 50%;
+    background: none; }
+  .wager-button-container .wager-button:focus {
+    outline: 0; }
 
 .player-single-hand {
   display: flex;
   flex-direction: column; }
-
-@media only screen and (max-width: 1630px) {
-  .card-container {
-    display: table-cell;
-    width: 40%; }
-  img {
-    height: 60%; } }
-
-@media only screen and (max-width: 1200px) {
-  .card-container {
-    display: table-cell;
-    width: 40%;
-    height: 80%; }
-  img {
-    height: 50%; } }

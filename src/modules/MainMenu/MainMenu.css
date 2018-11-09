@@ -1,44 +1,44 @@
 .main-menu {
-    color: cyan;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+  color: cyan;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: black;
+  border: cyan 5px solid;
+  -webkit-border-radius: 5%;
+  -moz-border-radius: 5%;
+  border-radius: 40px;
+  min-width: 450px;
+  min-height: 200px;
+  position: fixed;
+  left: 30vw;
+  top: 100px;
+  margin: 0 auto;
+  font-family: 'Raleway', sans-serif; }
+  .main-menu #player-name-input-box, .main-menu .add-player-button {
     background-color: black;
-    border: cyan 5px solid;
-    -webkit-border-radius: 5%;
-    -moz-border-radius: 5%;
-    border-radius: 40px;
-    width: 40vw;
-    height: 20vh;
-    position: fixed;
-    left: 30vw;
-    bottom: 60vh;
-    margin: 0 auto;
-    font-family: 'Raleway', sans-serif;
-}
+    color: cyan;
+    padding: 1em;
+    outline: none;
+    border: cyan solid 2px;
+    border-radius: 12px;
+    margin: 0 1em 1em 0; }
 
+h1 {
+  margin: 12px auto; }
 
 .btn {
-    bottom: 0;
-    height: 5vh;
-    border-radius: 40px;
-    font-family: 'Raleway', sans-serif;
-}
-
-.add-player-button {
-    color: cyan;
-    height: 3vh;
-    padding: 1%;
-    background-color: mediumpurple;
-    width: 140px;
-}
+  border-radius: 15px;
+  font-family: 'Raleway', sans-serif; }
 
 .new-game-button {
-    width: 18vw;
-    min-width: 140px;
-    margin: 2% auto;
-    padding: 1%;
-    border: cyan solid 3px;
-    background-color: mediumpurple;
-    color: cyan;
-}
+  position: relative;
+  bottom: 5px;
+  width: 18vw;
+  min-height: 5vh;
+  min-width: 140px;
+  margin: 2% auto;
+  padding: 1%;
+  border: cyan solid 3px;
+  background: none;
+  color: cyan; }
