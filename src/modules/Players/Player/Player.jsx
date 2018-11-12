@@ -85,14 +85,18 @@ class Player extends React.Component {
 
             </div>
             {this.props.playerTurn === this.props.id ?
-            <div className="action-button-container">
-                <button className="action-button" onClick={hit}>Hit</button>
-                <button className="action-button" onClick={stay}>Stay</button>
-                <button className="action-button" onClick={stay}>Split</button>
-                <button className="action-button" id="double-down-button" onClick={doubleDown}>Double Down</button>
-            </div>
+                <div className="action-button-container">
+                    <div className="row">
+                        <button className="action-button" onClick={hit}>Hit</button>
+                        <button className="action-button" onClick={stay}>Stay</button>
+                    </div>
+                    <div className="row">
+                        <button className="action-button" onClick={stay}>Split</button>
+                        <button className="action-button" id="double-down-button" onClick={doubleDown}>Double Down</button>
+                    </div>
+                </div>
             :
-            null
+                null
             }
         </div>
         )

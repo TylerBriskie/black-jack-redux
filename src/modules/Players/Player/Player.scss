@@ -69,15 +69,27 @@
     justify-content: space-around;
     flex-wrap: wrap;
 }
-
-.action-button {
-    color: greenyellow;
-    width: 60px;
-    height: 60px;
-    font-size: 140%;
-    background: none;
-    border-radius: 50%;
+.action-button-container {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    .row {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+    .action-button {
+        color: greenyellow;
+        width: 140px;
+        height: 60px;
+        font-size: 140%;
+        background: none;
+        border-radius: 20px;
+    }
 }
+
+
 #double-down-button {
     font-size: 100%;
 }
@@ -85,6 +97,8 @@
 .wager-button-container {
     display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
     color: mediumpurple;
     .wager-button {
         color: mediumpurple;
@@ -95,7 +109,9 @@
         border-radius: 50%;
         background: none;
     }
-
+    h4 {
+        font-size: 200%;
+    }
     .wager-button:focus {
         outline: 0;
     }
